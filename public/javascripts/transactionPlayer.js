@@ -3,6 +3,9 @@ function init() {
 }
 
 const token = JSON.parse(localStorage.getItem("token"));
+if (!token) {
+  window.location.href = '/login';
+}
 init();
 
 async function getalltransactionplayer() {

@@ -1,3 +1,8 @@
+const token = localStorage.getItem('token');
+
+if (!token) {
+    window.location.href = '/login';
+}
 const avatar = document.getElementById('avatar');
 const userInfo = document.getElementById('user-info');
 const logoutButton = document.getElementById('logout-button');

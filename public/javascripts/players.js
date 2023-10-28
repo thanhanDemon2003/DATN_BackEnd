@@ -5,6 +5,9 @@ function init() {
 const token = JSON.parse(localStorage.getItem("token"));
 var checked = {};
 
+if (!token) {
+  window.location.href = '/login';
+}
 init();
 
 async function getAllUsers() {
