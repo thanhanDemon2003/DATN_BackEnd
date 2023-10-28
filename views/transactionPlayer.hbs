@@ -1,0 +1,135 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/all.min.css" />
+    <link rel="stylesheet" href="/stylesheets/framework.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Giao dịch theo player</title>
+  </head>
+
+  <body>
+    <div class="page d-flex">
+      <div class="content w-full overflow-h">
+        <!-- Start Header -->
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"
+        ></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <div class="header bg-white p-15 between-flex p-fixed w-full">
+          <div class="p-relative">
+            <a href="/"><img
+                class="p-relative txt-c mt-0 logo"
+                src="/images/dot.png"
+                width="80"
+                height="80"
+                alt="Logo"
+              /></a>
+            <div class="menu-icon p-absolute">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="icons d-flex align-c">
+            <span class="notification p-relative">
+              <i class="fa-regular fa-bell fa-lg"></i>
+            </span>
+            <img src="/images/header.png" alt="AbdulJaleel" id="avatar" />
+            <div class="user-info" id="user-info">
+              <button
+                class="btn-shape c-white bg-333"
+                type="btn-ChangePassword"
+                onclick="clickOpenChangePass()"
+              >Đổi mật khẩu</button>
+              <button
+                class="btn-shape c-white bg-333"
+                type="button"
+                id="logout-button"
+              >Đăng xuất</button>
+            </div>
+          </div>
+        </div>
+        <script>
+
+          const avatar = document.getElementById('avatar'); const userInfo =
+          document.getElementById('user-info'); const logoutButton =
+          document.getElementById('logout-button'); let isShown = false;
+          avatar.addEventListener('click', () => { isShown = !isShown; if
+          (isShown) { userInfo.style.display = 'block'; } else {
+          userInfo.style.display = 'none'; } });
+          logoutButton.addEventListener('click', () => { window.location.href =
+          ''; }); // Xử lý click nút đăng xuất
+
+        </script>
+        <!-- End Header -->
+        <!-- Start Friends -->
+        <script src="/javascripts/transactionPlayer.js"></script>
+        <div class="friends-section p-20 mt-3p">
+          <h1 class="main-heading">Danh Sách Các Tài Khoản cPanel</h1>
+
+          <div class="project-table">
+            <div class="project-table p-20 bg-white rad-10 mt-20">
+              <table class="w-full">
+                <thead>
+                  <tr class="table-heading bg-eee fw-bold">
+                    <td>Player ID</td>
+                    <td>ID_Skin</td>
+                    <td>Tên Skin</td>
+                    <td>Giá mua</td>
+                    <td>Ngày mua</td>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Friends -->
+    <script src="/javascripts/changePass.js"></script>
+    <div id="dialogChangePass" class="dialogChangePass">
+      <div class="dialog-contentChangePass">
+        <span class="close" onclick="closeDialogChangePass()">
+          <i class="fa-sharp fa-solid fa-xmark fa-xl"></i>
+        </span>
+        <span class="fs-25">Đổi mật khẩu nè!</span>
+        <div class="mt-30">
+          <span class="fs-15 mr-25">Mật khẩu cũ: </span>
+          <input class="inputAddSkin ml-5" type="password" id="ipOldPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-25">Mật khẩu mới: </span>
+          <input class="inputAddSkin" type="password" id="ipNewPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-10">Xác nhận khẩu mới: </span>
+          <input class="inputAddSkin" type="password" id="ipReNewPass" />
+        </div>
+        <p
+          style="text-align: center; font-size:medium; margin-left: 40px; color:red"
+          id="errValue"
+        ></p>
+        <button
+          class="btn-shape c-white bg-blue width-fit left-flex mt-10"
+          onclick="changePassword()"
+        >Đổi mật khẩu</button>
+      </div>
+    </div>
+  </body>
+
+</html>

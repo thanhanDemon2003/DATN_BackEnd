@@ -1,2 +1,296 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/all.min.css" />
+    <link rel="stylesheet" href="/stylesheets/framework.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/dot.png" />
+    <title>Welcome</title>
+  </head>
+
+  <body>
+    <div class="page d-flex">
+      <div class="sidebar bg-white p-20 p-relative">
+        <a href="/"><img
+            class="p-relative txt-c mt-0 logo"
+            src="/images/dot.png"
+            alt="Logo"
+          /></a>
+        <ul>
+          <li>
+            <a class="active d-flex align-c fs-14 c-black rad-6 p-10" href="/">
+              <i class="fa-solid fa-house fa-fw"></i>
+              <span class="hide-mobile">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <p class="d-flex align-c fs-14 c-grey rad-6">
+              <span class="hide-mobile">Game</span>
+            </p>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/players">
+              <i class="fa-solid fa-user fa-fw"></i>
+              <span class="hide-mobile">Người chơi</span>
+            </a>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/gunskins">
+              <i class="fas fa-fire-extinguisher fa-fw"></i>
+              <span class="hide-mobile">Trang phục súng</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="d-flex align-c fs-14 c-black rad-6 p-10"
+              href="/transactions"
+            >
+              <i class="fa-solid fa-diagram-project fa-fw"></i>
+              <span class="hide-mobile">Lịch sử mua skin</span>
+            </a>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="payments">
+              <i class="fa-solid fa-file-invoice-dollar fa-fw"></i>
+              <span class="hide-mobile">Lịch sử thanh toán</span>
+            </a>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/donates">
+              <i class="fa-regular fa-credit-card fa-fw"></i>
+              <span class="hide-mobile">Tiền được ủng hộ</span>
+            </a>
+          </li>
+          <li>
+            <p class="d-flex align-c fs-14 c-grey rad-6">
+              <span class="hide-mobile">Admin</span>
+            </p>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/users">
+              <i class="fa-solid fa-user-gear fa-fw"></i>
+              <span class="hide-mobile">Users cPanel</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="content w-full overflow-h">
+        <!-- Start Header -->
+        <div class="header bg-white p-15 between-flex">
+          <div class="p-relative">
+            <h2 class="p-10 rad-10">cPanel Dark Disquite</h2>
+          </div>
+          <div class="icons d-flex align-c">
+            <span class="notification p-relative">
+              <i class="fa-regular fa-bell fa-lg"></i>
+            </span>
+            <img src="/images/header.png" alt="AbdulJaleel" id="avatar" />
+            <div class="user-info" id="user-info">
+              <button
+                class="btn-shape c-white bg-333"
+                type="btn-ChangePassword"
+                onclick="clickOpenChangePass()"
+              >Đổi mật khẩu</button>
+              <button
+                class="btn-shape c-white bg-333"
+                type="button"
+                id="logout-button"
+              >Đăng xuất</button>
+            </div>
+          </div>
+        </div>
+        <script src="/javascripts/index.js" type="text/javascript"></script>
+        <!-- End Header -->
+        <!-- Start Dashboard -->
+        <div class="dashboard">
+          <h1 class="main-heading">Trang chủ</h1>
+          <div class="welcome d-grid gap-20">
+            <!-- Start Welcome -->
+            <div class="welcome-box bg-white rad-10 overflow-h">
+              <div class="first bg-eee between-flex p-20">
+                <div class="welcome-text">
+                  <h2>Chào mừng</h2>
+                  <p class="mt-5 c-grey" id="username"></p>
+                </div>
+                <img
+                  class="hide-mobile"
+                  src="/images/welcome.png"
+                  alt="Welcome-Image!"
+                />
+              </div>
+              <img
+                src="/images/header.png"
+                alt=""
+                class="welcome-profile-image"
+              />
+              <div
+                class="details around-flex mt-20 mb-20 border-top border-bottom p-20"
+              >
+                <div>
+                  <p id="email"></p>
+                  <p class="c-grey mb-0">Email</p>
+                </div>
+                <div>
+                  <p id="role"></p>
+                  <p class="c-grey mb-0">Chức vụ</p>
+                </div>
+              </div>
+            </div>
+            <!-- End Welcome  -->
+            <!-- Start Yearly Targets -->
+            <div class="yearly p-20 bg-white flex-column-between rad-10">
+              <h2 class="mt-0 mb-0">Nổi bật</h2>
+              <p class="mt-5 c-grey">Thông tin</p>
+              <div class="icons flex-column-between gap-20">
+                <div class="money between-flex gap-20">
+                  <div class="icon center-flex">
+                    <i class="fa-solid fa-dollar-sign fa-lg c-blue fs-25"></i>
+                  </div>
+                  <div class="details flex">
+                    <p class="c-grey m-0">Tiền được ủng hộ</p>
+                    <h3 class="mt-10 mb-10">$20.000</h3>
+                    <div class="progress bg-blue">
+                      <span class="bg-blue d-block" style="width: 80%;"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="team between-flex gap-20">
+                  <div class="icon center-flex">
+                    <i class="fa-solid fa-user fa-lg c-green"></i>
+                  </div>
+                  <div class="details flex">
+                    <p class="c-grey mt-5 mb-10">Người chơi</p>
+                    <h3 class="mt-0 mb-5">12</h3>
+                    <div class="progress bg-green">
+                      <span class="bg-green d-block" style="width: 75%;"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Yearly Targets -->
+          </div>
+          <!-- Start Project-Table-->
+          <div class="project-table">
+            <div class="project-table p-20 bg-white rad-10 mt-20">
+              <h2 class="mt-0 mb-20">Xếp hạng nạp tiền</h2>
+              <table class="w-full">
+                <thead>
+                  <tr class="table-heading bg-eee fw-bold">
+                    <td>Người chơi</td>
+                    <td>Ngày nạp gần nhất</td>
+                    <td>Hình thức thanh toán</td>
+                    <td>Số tiền nạp</td>
+                    <td>Xếp hạng</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Name">Thành An</td>
+                    <td data-label="Finish Date">10 May 2023</td>
+                    <td data-label="Client">MoMo</td>
+                    <td data-label="Price">$100000000</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-red"
+                      >TOP 1</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Trọng Huân</td>
+                    <td data-label="Finish Date">09 Nov 2023</td>
+                    <td data-label="Client">Visa</td>
+                    <td data-label="Price">$10000000</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-orange"
+                      >TOP 2</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Vũ Phong</td>
+                    <td data-label="Finish Date">09 Sep 2023</td>
+                    <td data-label="Client">Chuyển khoản</td>
+                    <td data-label="Price">$1150000</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-blue"
+                      >TOP 3</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Anh Duy</td>
+                    <td data-label="Finish Date">22 May 2023</td>
+                    <td data-label="Client">Mater Card</td>
+                    <td data-label="Price">$10230</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-green"
+                      >TOP 4</span></td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Minh Trí</td>
+                    <td data-label="Finish Date">24 May 2023</td>
+                    <td data-label="Client">VNPay</td>
+                    <td data-label="Price">$1500</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-green"
+                      >TOP 5</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Gia Bảo</td>
+                    <td data-label="Finish Date">01 Apr 2023</td>
+                    <td data-label="Client">Zalo Pay</td>
+                    <td data-label="Price">$free</td>
+                    <td data-label="Status"><span
+                        class="btn-shape c-white bg-green"
+                      >TOP 6</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/javascripts/changePass.js"></script>
+    <div id="dialogChangePass" class="dialogChangePass">
+      <div class="dialog-contentChangePass">
+        <span class="close" onclick="closeDialogChangePass()">
+          <i class="fa-sharp fa-solid fa-xmark fa-xl"></i>
+        </span>
+        <span class="fs-25">Đổi mật khẩu nè!</span>
+        <div class="mt-30">
+          <span class="fs-15 mr-25" >Mật khẩu cũ:   </span>
+          <input class="inputAddSkin ml-5" type="password" id="ipOldPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-25" >Mật khẩu mới:   </span>
+          <input class="inputAddSkin" type="password" id="ipNewPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-10" >Xác nhận khẩu mới:   </span>
+          <input class="inputAddSkin" type="password" id="ipReNewPass" />
+        </div>
+          <p style="text-align: center; font-size:medium; margin-left: 40px; color:red" id="errValue">   </p>
+        <button
+          class="btn-shape c-white bg-blue width-fit left-flex mt-10"
+          onclick="changePassword()"
+        >Đổi mật khẩu</button>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+
+  <!-- End Project-Table-->
+
+  <!-- End Dashboard -->
+</html>

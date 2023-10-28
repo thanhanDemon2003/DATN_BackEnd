@@ -7,8 +7,9 @@ const schema = new Schema({
     id_Player: { type: String },
     id_GunSkin: { type: String },
     nameSkin: { type: String },
+    category: { type: String },
+    price: { type: Number},
     Date: { type: Date, default: Date.now },
-    price: { type: String},
 });
 
 module.exports = mongoose.models.transactions || mongoose.model('transactions', schema);

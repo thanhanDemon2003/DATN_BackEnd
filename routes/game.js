@@ -6,19 +6,15 @@ const TransactionController = require('../components/controller/TransactionContr
 //player
 router.post('/Login', PlayerController.LoginFacebookController);
 router.post('/saveposition/:id', PlayerController.SavePositionController);
-router.put('/lockPlayer/:id', PlayerController.banPlayerController);
-
+router.get('/wardrobeplayer/:id', PlayerController.wardrobeController);
 
 //gunskin
-router.get('/getallgunskin', GunSkinController.GetGunSkinController);
 router.get('/getgunskin/:id', GunSkinController.GetGunSkinByIdController);
-router.post('/gunskin', GunSkinController.CreateGunSkinController);
-router.put('/updategunskin/:id', GunSkinController.UpdateGunSkinController);
-router.put('/deletegunskin/:id', GunSkinController.DeleteGunSkinController);
-router.put('/discountgunskin', GunSkinController.DiscountGunSkinController);
-
+router.get('/getallgunskin', GunSkinController.GetGunSkinController);
+router.get('/getgunskinbuy', GunSkinController.getGunSkinBuyController);
+router.get('/getgunskinsale', GunSkinController.getGunSkinSaleController);
+router.get('/getgunskinnotbuy', GunSkinController.getGunSkinNotBuyController);
 //transaction
 router.post('/buygunskin', TransactionController.buyGunSkinController);
-router.get('/getalltransaction', TransactionController.getAllTransactionController);
-
+router.get('/gettransactionplayer/:id', TransactionController.getTransactionPlayerController);
 module.exports = router;

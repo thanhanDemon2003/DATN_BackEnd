@@ -9,8 +9,9 @@ const schema = new Schema({
         type: String,
         require: true,
     },
+    category: { type: String },
     price: { type: String},
     percent : { type: Number, default: 0},
-    status  : { type: Number, default: 0}
+    status  : { type: Number, default: 1}
 });
 module.exports = mongoose.models.gunskins || mongoose.model('gunskins', schema);

@@ -15,7 +15,9 @@ const schema = new Schema({
     positionZ: { type: String, default: "0" },
     wardrobe: [{ 
         gunskinId: { type: String }, 
-        nameSkin: { type: String }
+        nameSkin: { type: String },
+        color: { type: String },
+        category: { type: String },
     }],
     balance: { type: String, default: "0" },
     status: { type: Number, default: 0 }
