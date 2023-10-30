@@ -13,6 +13,11 @@ const LoginFacebookService = async (fb_id) => {
     throw error;
   }
 };
+const LoginFacebookPayment = async (fb_id) => {
+    const tokenFB = await PlayerModel.findOne({ fb_id });
+    return tokenFB;
+
+};
 const SavePosition = async (id, positionX, positionY, positionZ) => {
   try {
     const position = await PlayerModel.findOneAndUpdate({
@@ -87,4 +92,5 @@ module.exports = {
   wardrobe,
   getAllPlayers,
   updatePlayer,
+  LoginFacebookPayment
 };

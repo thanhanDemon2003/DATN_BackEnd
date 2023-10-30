@@ -7,7 +7,7 @@ const TransactionController = require('../components/controller/TransactionContr
 router.post('/Login', PlayerController.LoginFacebookController);
 router.post('/saveposition/:id', PlayerController.SavePositionController);
 router.get('/wardrobeplayer/:id', PlayerController.wardrobeController);
-
+router.post('/loginpayment', PlayerController.LoginPayToFacebook)
 //gunskin
 router.get('/getgunskin/:id', GunSkinController.GetGunSkinByIdController);
 router.get('/getallgunskin', GunSkinController.GetGunSkinController);
