@@ -24,7 +24,7 @@ router.post('/send-sms', (req, res) => {
       }
     }, (err, httpRes, body) => {
       if (err) {
-        return res.status(500).send('Lỗi gửi tin nhắn', err);
+        return res.status(500).send('Lỗi gửi tin nhắn', err, httpRes, body);
       }
       
       res.send('Tin nhắn đã được gửi');  
