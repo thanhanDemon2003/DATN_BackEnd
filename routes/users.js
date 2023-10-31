@@ -17,16 +17,17 @@ router.post('/send-sms', (req, res) => {
     
     // Gọi API gửi SMS 
     request.post({
-      url:process.env.BLOWER_URL + '/messages' ,
+      url:"https://ae322f8e-72ca-4686-b35d-8171671f5444:RfLH0WUZcsYeFmv0SnnbjA@api.blower.io/messages" ,
       form: {
         to,
         message   
       }
     }, (err, httpRes, body) => {
       if (err) {
+      console.log(err, httpRes, body)
         return res.status(500).send('Lỗi gửi tin nhắn', err, httpRes, body);
       }
-      
+      console.log(err, httpRes, body)
       res.send('Tin nhắn đã được gửi');  
     });
   
