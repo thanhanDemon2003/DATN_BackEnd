@@ -4,4 +4,31 @@ const UserCpanelController = require('../components/controller/UserCpanelControl
 
 router.post('/loginCpanel', UserCpanelController.loginCpanel);
 
+
+var request = require('request')
+// var countryCode = '+61',
+//     mobileNumber = '422123456',
+//     message = 'Hello from Blower.io';
+
+router.post('/send-sms', (req, res) => {
+
+    // Lấy dữ liệu từ body
+    const {to, message} = req.body;
+    
+    // Gọi API gửi SMS 
+    request.post({
+      url:process.env.BLOWER_URL + '/messages' ,
+      form: {
+        to,
+        message   
+      }
+    }, (err, httpRes, body) => {
+      if (err) {
+        return res.status(500).send('Lỗi gửi tin nhắn');
+      }
+      
+      res.send('Tin nhắn đã được gửi');  
+    });
+  
+  });
 module.exports = router;
