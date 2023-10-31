@@ -1,5 +1,6 @@
 const PlayerService = require("../service/PlayerService");
 
+
 const LoginFacebookController = async (req, res, next) => {
   try {
     const tokenFB = req.query.token;
@@ -12,7 +13,6 @@ const LoginFacebookController = async (req, res, next) => {
     if (!tokenFB) {
       return res.status(400).json({ error: 1, notification: "Không có token" });
     }
-    console.log(login.status);
     if (login.status == 1) {
       return res
         .status(400)
@@ -25,6 +25,9 @@ const LoginFacebookController = async (req, res, next) => {
     res.status(500).json({ error: 2, notification: "Lỗi server" });
   }
 };
+
+
+
 const LoginPayToFacebook = async (req, res, next) => {
   try {
     const tokenFB = req.query.token;
@@ -41,7 +44,7 @@ const LoginPayToFacebook = async (req, res, next) => {
     }
     return res
       .status(200)
-      .json({ success: true, notification: "Đăng nhập thành công" });
+      .json({ success: true, notification: "Đăng nhập thành công", data:{id: login.fb_id, name: login.name } });
   } catch (error) {
     res.status(500).json({ error: 2, notification: "Lỗi server" });
   }

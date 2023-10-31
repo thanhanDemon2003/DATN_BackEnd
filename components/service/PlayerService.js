@@ -1,21 +1,67 @@
 const PlayerModel = require("../model/PlayerModel");
+const request = require("request");
 
-const LoginFacebookService = async (fb_id) => {
+const LoginFacebookService = async (tokenFB) => {
   try {
-    const tokenFB = await PlayerModel.findOne({ fb_id });
-    if (!tokenFB) {
+    const fb = await FBService(tokenFB);
+    const fb_id = fb.id;
+    const name = fb.name;
+    const checkFbId = await PlayerModel.findOne({ fb_id });
+    if (checkFbId && checkFbId.status == 0 && checkFbId.tokenFB !== tokenFB) {
+        checkFbId.tokenFB = tokenFB || checkFbId.tokenFB;
+        await checkFbId.save();
+    }
+    if (!fb_id) {
+      throw "Không có id";
+    }
+    if (!checkFbId) {
       await PlayerModel.create({
         fb_id,
+        tokenFB,
+        name,
       });
     }
-    return tokenFB;
+    return checkFbId;
   } catch (error) {
     throw error;
   }
 };
-const LoginFacebookPayment = async (fb_id) => {
-    const tokenFB = await PlayerModel.findOne({ fb_id });
-    return tokenFB;
+// const FBService = async (tokenFB) => {
+//   request.get(`https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${tokenFB}`, function (err, res, body) {
+//       console.log("aaaa>>>>>>>>>");
+//       let data = JSON.parse(body)
+//       console.log("fbservice >>>>>>",data.id);
+//       return data;
+//   });
+// }
+const FBService = async (tokenFB) => {
+
+  return new Promise((resolve, reject) => {
+
+    request.get(`https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${tokenFB}`, function(err, res, body) {
+
+      if(err) return reject(err);
+
+      try {
+        let data = JSON.parse(body);
+        resolve(data);  
+      } catch(err) {
+        reject(err);
+      }
+
+    });
+
+  });
+
+}
+
+const LoginFacebookPayment = async (tokenFB) => {
+    const fb = await FBService(tokenFB);
+    const fb_id = fb.id;
+    const checkFB = await PlayerModel.findOne({ fb_id });
+
+
+    return checkFB;
 
 };
 const SavePosition = async (id, positionX, positionY, positionZ) => {
