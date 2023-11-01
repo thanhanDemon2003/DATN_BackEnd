@@ -9,7 +9,7 @@ const validate = require('./validate/Jwt');
 const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type, Authorization'
+  allowedHeaders: 'Content-Type, Authorization, Access-Control-Allow-Origin'
 }
 var indexRouter = require('./routes/index');
 var cpanelRouter = require('./routes/cpanel');
