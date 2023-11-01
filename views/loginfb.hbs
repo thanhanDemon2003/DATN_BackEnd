@@ -59,9 +59,9 @@
                 },
               })
                 .then((res) => res.json())
-                .then((data) => {
+                .then((res) => {
                   localStorage.setItem("data", res);
-                  if (data.success) {
+                  if (res.id) {
                     window.location.href = "https://thanhan.andemongame.tech/tes/PayWeb/index.html";
                   } else {
                     alert("Đăng nhập thất bại");
