@@ -3,8 +3,8 @@ const PlayerService = require("../service/PlayerService");
 
 const LoginFacebookController = async (req, res, next) => {
   try {
-    const tokenFB = req.query.token;
-    const name = req.query.name
+    const tokenFB = req.body.token;
+    const name = req.body.name
     if(!tokenFB){
       return res.status(400).json({ error: 1, notification: "ID fb trống" });
     }
