@@ -59,7 +59,7 @@
       async function loginApi(id) {
         try {
           const url =
-        "https://gamedatn.andemongame.tech/games/loginpayment?token=" + idFb;
+        "https://gamedatn.andemongame.tech/games/loginpayment?token=" + id;
           const response = await fetch(url);
 
           if (!response.ok) {
