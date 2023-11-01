@@ -69,7 +69,6 @@
           const data = await response.json();
           if (data.success) {
           sessionStorage.setItem('data', data);
-            window.location.href = "https://thanhan.andemongame.tech/tes/PayWeb/index.html";
             console.log(data);
           } else {
             alert("Đăng nhập thất bại");
