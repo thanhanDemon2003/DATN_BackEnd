@@ -48,31 +48,37 @@
               });
               const idFb = response.id;
               console.log(idFb);
-              const url =
-                "https://gamedatn.andemongame.tech/games/loginpayment?token=" +
-                idFb;
-
-              fetch(url, {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              })
-                .then((res) => res.json())
-                .then((res) => {
-                  localStorage.setItem("data", res);
-                  if (res.id) {
-                    window.location.href = "https://thanhan.andemongame.tech/tes/PayWeb/index.html";
-                  } else {
-                    alert("Đăng nhập thất bại");
-                  }
-                });
+              loginApi(idFb);
             });
           } else {
             console.log("User cancelled login or did not fully authorize.");
           }
         });
       };
+
+      async function loginApi(id) {
+        try {
+          const url =
+        "https://gamedatn.andemongame.tech/games/loginpayment?token=" + idFb;
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error("Lỗi kết nối API");
+          }
+
+          const data = await response.json();
+          localStorage.setItem("data", data);
+          if (data.success) {
+            window.location.href = "https://thanhan.andemongame.tech/tes/PayWeb/index.html";
+            console.log(data);
+          } else {
+            alert("Đăng nhập thất bại");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
       // const loginApi =  (id)=>
       //   fetch(`https://gamedatn.andemongame.tech/games/loginpayment?token=${id}`,{
       //     method: 'POST',
