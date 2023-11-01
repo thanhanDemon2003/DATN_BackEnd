@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const validate = require('./validate/Jwt');
-const allowedOrigins = ['https://admin.andemongame.tech','https://andemongame.tech','https://thanhan.andemongame.tech', 'http://localhost:3000'];
+const allowedOrigins = ['https://gamedatn.andemongame.tech', 'http://localhost:3000'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
