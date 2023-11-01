@@ -4,11 +4,15 @@ const PlayerService = require("../service/PlayerService");
 const LoginFacebookController = async (req, res, next) => {
   try {
     const tokenFB = req.query.token;
-    const login = await PlayerService.LoginFacebookService(tokenFB);
+    const name = req.query.name
+    if(!tokenFB){
+      return res.status(400).json({ error: 1, notification: "ID fb trống" });
+    }
+    const login = await PlayerService.LoginFacebookService(tokenFB,name);
     if (!login) {
       return res
-        .status(200)
-        .json({ success: 1, notification: "Tạo tài khoản thành công" });
+        .status(400)
+        .json({ error: 0, notification: "Thiếu trường dữ liệu", id_fb:tokenFB, name: name});
     }
     if (!tokenFB) {
       return res.status(400).json({ error: 1, notification: "Không có token" });
@@ -31,6 +35,9 @@ const LoginFacebookController = async (req, res, next) => {
 const LoginPayToFacebook = async (req, res, next) => {
   try {
     const tokenFB = req.query.token;
+    if(!tokenFB){
+      return res.status(400).json({ error: 1, notification: "ID fb trống" });
+    }
     const login = await PlayerService.LoginFacebookPayment(tokenFB);
     if (!login) {
       return res
@@ -44,7 +51,7 @@ const LoginPayToFacebook = async (req, res, next) => {
     }
     return res
       .status(200)
-      .json({ success: true, notification: "Đăng nhập thành công", data:{id: login.fb_id, name: login.name } });
+      .json({ success: true, notification: "Đăng nhập thành công", data:{id:login._id, id_fb: login.fb_id, name: login.name } });
   } catch (error) {
     res.status(500).json({ error: 2, notification: "Lỗi server" });
   }

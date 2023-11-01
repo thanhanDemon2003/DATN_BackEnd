@@ -1,27 +1,18 @@
 const PlayerModel = require("../model/PlayerModel");
 const request = require("request");
 
-const LoginFacebookService = async (tokenFB) => {
+const LoginFacebookService = async (tokenFB, name) => {
   try {
-    const fb = await FBService(tokenFB);
-    const fb_id = fb.id;
-    const name = fb.name;
-    const checkFbId = await PlayerModel.findOne({ fb_id });
-    if (checkFbId && checkFbId.status == 0 && checkFbId.tokenFB !== tokenFB) {
-        checkFbId.tokenFB = tokenFB || checkFbId.tokenFB;
-        await checkFbId.save();
-    }
-    if (!fb_id) {
-      throw "Không có id";
-    }
-    if (!checkFbId) {
-      await PlayerModel.create({
-        fb_id,
-        tokenFB,
-        name,
+    const user = await PlayerModel.findOne({ fb_id: tokenFB });
+    if(!user && name) {  
+      const newUser = new PlayerModel({
+        fb_id: tokenFB,
+        name: name,
       });
+      await newUser.save();
+      return newUser;
     }
-    return checkFbId;
+    return user;
   } catch (error) {
     throw error;
   }
@@ -34,35 +25,30 @@ const LoginFacebookService = async (tokenFB) => {
 //       return data;
 //   });
 // }
-const FBService = async (tokenFB) => {
+// const FBService = async (tokenFB) => {
 
-  return new Promise((resolve, reject) => {
+//   return new Promise((resolve, reject) => {
 
-    request.get(`https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${tokenFB}`, function(err, res, body) {
+//     request.get(`https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${tokenFB}`, function(err, res, body) {
 
-      if(err) return reject(err);
+//       if(err) return reject(err);
 
-      try {
-        let data = JSON.parse(body);
-        resolve(data);  
-      } catch(err) {
-        reject(err);
-      }
+//       try {
+//         let data = JSON.parse(body);
+//         resolve(data);  
+//       } catch(err) {
+//         reject(err);
+//       }
 
-    });
+//     });
 
-  });
+//   });
 
-}
+// }
 
 const LoginFacebookPayment = async (tokenFB) => {
-    const fb = await FBService(tokenFB);
-    const fb_id = fb.id;
-    const checkFB = await PlayerModel.findOne({ fb_id });
-
-
-    return checkFB;
-
+  const user = await PlayerModel.findOne({ fb_id: tokenFB });
+  return user;
 };
 const SavePosition = async (id, positionX, positionY, positionZ) => {
   try {
