@@ -6,16 +6,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const validate = require('./validate/Jwt');
-const allowedOrigins = ['*'];
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: 'Content-Type, Authorization'
+}
 var indexRouter = require('./routes/index');
 var cpanelRouter = require('./routes/cpanel');
 var usersRouter = require('./routes/users');
