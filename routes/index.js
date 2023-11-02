@@ -32,8 +32,6 @@ router.get('/users', function (req, res, next) {
 router.get('/transactions/transactionsplayer', function (req, res, next) {
   res.render('transactionPlayer');
 });
-router.get('/loginfb', function (req, res, next) {
-  res.render('loginfb');
-});
+
 
 module.exports = router;
