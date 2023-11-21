@@ -5,9 +5,11 @@ const GunSkinController = require('../components/controller/GunSkinController');
 const TransactionController = require('../components/controller/TransactionController');
 //player
 router.post('/Login', PlayerController.LoginFacebookController);
+router.post('/Loginwithdiscord', PlayerController.LoginDiscordController);
 router.post('/saveposition/:id', PlayerController.SavePositionController);
 router.get('/wardrobeplayer/:id', PlayerController.wardrobeController);
 router.get('/loginpayment', PlayerController.LoginPayToFacebook)
+router.post('/LinkAddLogin/:id', PlayerController.LinkAddLoginController)
 //gunskin
 router.get('/getgunskin/:id', GunSkinController.GetGunSkinByIdController);
 router.get('/getallgunskin', GunSkinController.GetGunSkinController);

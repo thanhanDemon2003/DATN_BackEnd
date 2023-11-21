@@ -7,9 +7,8 @@ const schema = new Schema({
   name: { type: String },
   fb_id: {
     type: String,
-    require: true,
-    unique: true,
   },
+  id_discord: { type: String },
   name: { type: String },
   positionX: { type: String, default: "0" },
   positionY: { type: String, default: "0" },

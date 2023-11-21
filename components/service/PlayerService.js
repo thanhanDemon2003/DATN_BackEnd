@@ -4,7 +4,7 @@ const request = require("request");
 const LoginFacebookService = async (tokenFB, name) => {
   try {
     const user = await PlayerModel.findOne({ fb_id: tokenFB });
-    if(!user && name) {  
+    if (!user && name) {
       const newUser = new PlayerModel({
         fb_id: tokenFB,
         name: name,
@@ -16,6 +16,34 @@ const LoginFacebookService = async (tokenFB, name) => {
   } catch (error) {
     throw error;
   }
+};
+const LoginDiscordService = async (id_discord, name) => {
+  try {
+    const user = await PlayerModel.findOne({ id_discord: id_discord });
+    if (!user && name) {
+      const newUser = new PlayerModel({
+        id_discord: id_discord,
+        name: name,
+      });
+      await newUser.save();
+      return newUser;
+    }
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+const LinkAddLoginServiceDiscord = async (id, id_discord) => {
+  const user = await PlayerModel.findById({ _id: id });
+    user.id_discord = id_discord;
+    await user.save();
+  return user;
+};
+const LinkAddLoginServiceGG = async (id, fb_id) => {
+  const user = await PlayerModel.findById({ _id: id });
+    user.fb_id = fb_id;
+    await user.save();
+  return user;
 };
 // const FBService = async (tokenFB) => {
 //   request.get(`https://graph.facebook.com/v18.0/me?fields=id,name&access_token=${tokenFB}`, function (err, res, body) {
@@ -35,7 +63,7 @@ const LoginFacebookService = async (tokenFB, name) => {
 
 //       try {
 //         let data = JSON.parse(body);
-//         resolve(data);  
+//         resolve(data);
 //       } catch(err) {
 //         reject(err);
 //       }
@@ -71,7 +99,14 @@ const getPlayer = async (id) => {
     throw error;
   }
 };
-const updateGunSkin = async (id, balance, skinId, nameSkin, color, category) => {
+const updateGunSkin = async (
+  id,
+  balance,
+  skinId,
+  nameSkin,
+  color,
+  category
+) => {
   try {
     const player = await PlayerModel.findById(id);
     player.balance = balance || balance;
@@ -124,5 +159,8 @@ module.exports = {
   wardrobe,
   getAllPlayers,
   updatePlayer,
-  LoginFacebookPayment
+  LoginFacebookPayment,
+  LoginDiscordService,
+  LinkAddLoginServiceGG,
+  LinkAddLoginServiceDiscord
 };

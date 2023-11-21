@@ -29,8 +29,71 @@ const LoginFacebookController = async (req, res, next) => {
     res.status(500).json({ error: 2, notification: "Lỗi server" });
   }
 };
-
-
+const LoginDiscordController = async (req, res, next) => {
+  try {
+    const id_discord = req.body.id_discord;
+    const name = req.body.name
+    if(!id_discord){
+      return res.status(400).json({ error: 1, notification: "ID discord trống" });
+    }
+    const login = await PlayerService.LoginDiscordService(id_discord, name);
+    console.log(login);
+    if (!login) {
+      return res
+        .status(400)
+        .json({ error: 0, notification: "Thiếu trường dữ liệu", id_discord:id_discord, name: name});
+    }
+    if (!id_discord) {
+      return res.status(400).json({ error: 1, notification: "Không có token" });
+    }
+    if (login.status == 1) {
+      return res
+        .status(400)
+        .json({ error: 0, notification: "Tài khoản này đã bị khóa" });
+    }
+    return res
+      .status(200)
+      .json({ success: 2, notification: "Đăng nhập thành công", data: login });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 2, notification: "Lỗi server" });
+  }
+}
+const LinkAddLoginController = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const fb_id = req.query.gg;
+    const id_discord = req.query.discord;
+    if(!id_discord && !fb_id){
+      return res.status(400).json({ error: 1, notification: "ID discord và ID google trống" });
+    }
+    if(!fb_id) {
+    const link = await PlayerService.LinkAddLoginServiceDiscord(id, id_discord);
+    if (!link) {
+      return res
+        .status(400)
+        .json({ error: 1, notification: "Không tìm thấy người chơi", id: id });
+    }
+    return res
+      .status(200)
+      .json({ success: 1, notification: "Thành công", data: link });
+    }
+    if(!id_discord){
+    const link = await PlayerService.LinkAddLoginServiceGG(id, fb_id);
+    if (!link) {
+      return res
+        .status(400)
+        .json({ error: 1, notification: "Không tìm thấy người chơi", id: id });
+    }
+    return res
+      .status(200)
+      .json({ success: 1, notification: "Thành công", data: link });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: 0, notification: "Lỗi server" });
+  }
+}
 
 const LoginPayToFacebook = async (req, res, next) => {
   try {
@@ -181,5 +244,7 @@ module.exports = {
   getAllPlayers,
   getPlayerControllers,
   updatePlayerControllers,
-  LoginPayToFacebook
+  LoginPayToFacebook,
+  LoginDiscordController,
+  LinkAddLoginController
 };
