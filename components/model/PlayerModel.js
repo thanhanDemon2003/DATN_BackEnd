@@ -24,4 +24,5 @@ const schema = new Schema({
   balance: { type: String, default: "0" },
   status: { type: Number, default: 0 },
 });
+
 module.exports = mongoose.models.players || mongoose.model("players", schema);

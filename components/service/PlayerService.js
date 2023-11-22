@@ -1,6 +1,23 @@
 const PlayerModel = require("../model/PlayerModel");
 const request = require("request");
 
+
+
+const defaultGun = [
+  {
+    gunskinId: "none",
+    nameSkin: "SMGDefault",
+    color: "SMGDefault",
+    category: "Primary",
+  },
+  {
+    gunskinId: "none",
+    nameSkin: "PistolDefault",
+    color: "PistolDefault",
+    category: "Secondary",
+  },
+];
+
 const LoginFacebookService = async (tokenFB, name) => {
   try {
     const user = await PlayerModel.findOne({ fb_id: tokenFB });
@@ -8,6 +25,7 @@ const LoginFacebookService = async (tokenFB, name) => {
       const newUser = new PlayerModel({
         fb_id: tokenFB,
         name: name,
+        wardrobe: defaultGun,
       });
       await newUser.save();
       return newUser;
@@ -24,6 +42,7 @@ const LoginDiscordService = async (id_discord, name) => {
       const newUser = new PlayerModel({
         id_discord: id_discord,
         name: name,
+        wardrobe: defaultGun,
       });
       await newUser.save();
       return newUser;
