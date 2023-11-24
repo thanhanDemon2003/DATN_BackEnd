@@ -84,7 +84,7 @@ const giveGunSkinController = async (req, res) => {
       success: 0,
       notification: "Bạn đã mua skin thành công",
       transaction,
-      updatePlayer,
+      data: updatePlayer,
     });
   } catch (error) {
     console.log(error);
