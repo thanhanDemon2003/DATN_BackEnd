@@ -41,7 +41,7 @@ const buyGunSkinController = async (req, res) => {
         success: 0,
         notification: "Bạn đã mua skin thành công",
         transaction,
-        updatePlayer,
+        data: updatePlayer,
       });
     } else {
       res.status(400).json({ error: 2, notification: "Bạn không có đủ tiền" });
