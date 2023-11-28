@@ -82,9 +82,9 @@ const DiscountGunSkinController = async (req, res) => {
         if (percent === ""|| percent === null|| percent === undefined) {
             return res.status(400).json({ error: 1, notification: 'Vui lòng nhập giảm giá' });
         }
-        if(percent =[a-zA-Z]){
-            return res.status(400).json({ error: 1, notification: 'Giảm giá chỉ nhận số' });
-        }
+        // if(percent =[a-zA-Z]){
+        //     return res.status(400).json({ error: 1, notification: 'Giảm giá chỉ nhận số' });
+        // }
         const gunskin = await GunSkinService.DiscountGunSkinService(ids, percent, status);
         if (!gunskin) {
             return res.status(400).json({ error: 1, notification: 'Không tìm thấy skin', id: id });

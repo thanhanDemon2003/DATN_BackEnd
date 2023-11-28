@@ -4,6 +4,7 @@ const UserCpanelController = require('../components/controller/UserCpanelControl
 const PlayerController = require('../components/controller/PlayerController');
 const GunSkinController = require('../components/controller/GunSkinController');
 const TransactionController = require('../components/controller/TransactionController');
+const PaymentController = require('../components/controller/PaymentController');
 const validate = require('../validate/Jwt');
 /* GET home page. */
 
@@ -37,5 +38,6 @@ router.get('/getgunskinbuy', GunSkinController.getGunSkinBuyController);
 router.get('/getalltransaction', TransactionController.getAllTransactionController);
 router.get('/gettransactionplayer/:id', TransactionController.getTransactionPlayerController);
 router.get('/getalltransactionplayer', TransactionController.getAllTransactionPlayersController);
-
+//payment 
+router.get('/getallpayment', PaymentController.GetAllPaymentsController)
 module.exports = router;
