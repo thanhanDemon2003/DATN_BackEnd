@@ -135,6 +135,7 @@ const updateGunSkin = async (
       color: color,
       category: category,
     };
+    console.log("gun", gun);
     player.wardrobe.push(gun);
     await player.save();
     return player;

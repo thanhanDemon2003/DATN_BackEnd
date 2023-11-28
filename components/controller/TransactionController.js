@@ -32,10 +32,11 @@ const buyGunSkinController = async (req, res) => {
       );
       const updatePlayer = await PlayerService.updateGunSkin(
         id_Player,
-        newBalance,
+        player.balance,
         id_GunSkin,
         gunskin.name,
-        gunskin.color
+        gunskin.color,
+        gunskin.category,
       );
       res.status(200).json({
         success: 0,
@@ -72,6 +73,7 @@ const giveGunSkinController = async (req, res) => {
       gunskinPrice,
       gunskin.category
     );
+    console.log(gunskin.category, "guskin");
     const updatePlayer = await PlayerService.updateGunSkin(
       id_Player,
       player.balance,
