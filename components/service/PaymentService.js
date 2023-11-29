@@ -8,7 +8,8 @@ const GetAllPayments = async () => {
     return allPayment;
 };
 const GetPaymentPlayer= async (idPlayer) => {
-    const payment = await paymentModel.findOne({idPlayer: idPlayer});
+    const payment = await paymentModel.find({idPlayer: idPlayer});
+    console.log(payment);
     return payment;
 }
 module.exports = {
