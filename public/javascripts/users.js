@@ -43,7 +43,7 @@ function handleNewUser(user) {
     <div class="person txt-c">
       <img src="images/friend-05.jpg" alt="" />
       <h3 class="mb-0 mt-10">${user.username}</h3>
-      <p class="fs-14 c-grey mt-5">User</p>
+      <p class="fs-14 c-grey mt-5">Manager</p>
     </div>
     <div class="pt-15 pb-15 border-bottom border-top p-relative">
       <div class="fs-13 mb-10" id="email">
@@ -110,7 +110,7 @@ function handleNewUser(user) {
     <div class="person txt-c">
       <img src="images/friend-05.jpg" alt="" />
       <h3 class="mb-0 mt-10">${user.username}</h3>
-      <p class="fs-14 c-grey mt-5">User</p>
+      <p class="fs-14 c-grey mt-5">Manager</p>
     </div>
     <div class="pt-15 pb-15 border-bottom border-top p-relative">
       <div class="fs-13 mb-10" id="email">
