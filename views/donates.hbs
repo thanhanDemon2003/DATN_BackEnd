@@ -1,125 +1,204 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/all.min.css" />
+    <link rel="stylesheet" href="/stylesheets/framework.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/images/dot.png" />
+    <title>Thưởng dotcoin</title>
+  </head>
 
-	<title>404</title>
+  <body>
+    <div class="page d-flex">
+      <div class="sidebar bg-white p-20 p-relative">
+        <a href="/"><img
+            class="p-relative txt-c mt-0 logo"
+            src="/images/dot.png"
+            alt="Logo"
+          /></a>
+        <ul>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/">
+              <i class="fa-solid fa-house fa-fw"></i>
+              <span class="hide-mobile">Trang chủ</span>
+            </a>
+          </li>
+          <li>
+            <p class="d-flex align-c fs-14 c-grey rad-6">
+              <span class="hide-mobile">Game</span>
+            </p>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/players">
+              <i class="fa-solid fa-user fa-fw"></i>
+              <span class="hide-mobile">Người chơi</span>
+            </a>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/gunskins">
+              <i class="fas fa-fire-extinguisher fa-fw"></i>
+              <span class="hide-mobile">Trang phục súng</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="d-flex align-c fs-14 c-black rad-6 p-10"
+              href="/transactions"
+            >
+              <i class="fa-solid fa-diagram-project fa-fw"></i>
+              <span class="hide-mobile">Lịch sử mua skin</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="active d-flex align-c fs-14 c-black rad-6 p-10"
+              href="payments"
+            >
+              <i class="fa-solid fa-file-invoice-dollar fa-fw"></i>
+              <span class="hide-mobile">Lịch sử thanh toán</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="d-flex align-c fs-14 c-black rad-6 p-10"
+              href="/dotcoinplus"
+            >
+              <i class="fa-solid fa-file-invoice-dollar fa-coins"></i>
+              <span class="hide-mobile">Lịch sử thưởng dotcoin</span>
+            </a>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/donates">
+              <i class="fa-regular fa-credit-card fa-fw"></i>
+              <span class="hide-mobile">Tiền được ủng hộ</span>
+            </a>
+          </li>
+          <li>
+            <p class="d-flex align-c fs-14 c-grey rad-6">
+              <span class="hide-mobile">Admin</span>
+            </p>
+          </li>
+          <li>
+            <a class="d-flex align-c fs-14 c-black rad-6 p-10" href="/users">
+              <i class="fa-solid fa-user-gear fa-fw"></i>
+              <span class="hide-mobile">Users cPanel</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="content w-full overflow-h">
+        <!-- Start Header -->
+        <div class="header bg-white p-15 between-flex">
+          <div class="p-relative">
+            <h2 class="p-10 rad-10">cPanel Dark Disquite</h2>
+          </div>
+          <div class="icons d-flex align-c">
+            <span class="notification p-relative">
+              <i class="fa-regular fa-bell fa-lg"></i>
+            </span>
+            <img src="images/header.png" alt="AbdulJaleel" id="avatar" />
+            <div class="user-info" id="user-info">
+              <button
+                class="btn-shape c-white bg-333"
+                type="btn-ChangePassword"
+                onclick="clickOpenChangePass()"
+              >Đổi mật khẩu</button>
+              <button
+                class="btn-shape c-white bg-333"
+                type="button"
+                id="logout-button"
+              >Đăng xuất</button>
+            </div>
+          </div>
+        </div>
+        <script>
+          const avatar = document.getElementById('avatar'); const userInfo =
+          document.getElementById('user-info'); const logoutButton =
+          document.getElementById('logout-button'); let isShown = false;
+          avatar.addEventListener('click', () => { isShown = !isShown; if
+          (isShown) { userInfo.style.display = 'block'; } else {
+          userInfo.style.display = 'none'; } });
+          logoutButton.addEventListener('click', () => { window.location.href =
+          '/login'; localStorage.clear(); }); // Xử lý click nút đăng xuất
 
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet"> 
+        </script>
+        <!-- Start Profile -->
+        <div class="projects-section p-20">
+          <h1 class="main-heading">Lịch sử dotnate</h1>
+          <span class="btn-shape bg-blue mt-0 mb- w-full c-white">Thêm</span>
 
-	<style>
-        * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
+          <div class="project-table">
+            <div class="project-table p-20 bg-white rad-10 mt-20">
+                <table class="w-full">
+                    <thead>
+                        <tr class=" table-heading bg-eee fw-bold">
+                            <td>Người chơi donate</td>
+                            <td>Ngày donate</td>
+                            <td>Hình thức</td>
+                            <td>Số tiền donate</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Name">Nguyễn Thành An</td>
+                            <td data-label="Finish Date">20/11/2023</td>
+                            <td data-label="Client">Momo</td>
+                            <td data-label="Price">20000 VNĐ</td>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td data-label="Name">Nguyễn Trọng Huân</td>
+                          <td data-label="Finish Date">22/11/2023</td>
+                          <td data-label="Client">Zalo Pay</td>
+                          <td data-label="Price">50000 VNĐ</td>
+                          </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+    </div>
 
-body {
-  padding: 0;
-  margin: 0;
-}
-
-#notfound {
-  position: relative;
-  height: 100vh;
-  background-color: #222;
-}
-
-#notfound .notfound {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.notfound {
-  max-width: 460px;
-  width: 100%;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.notfound .notfound-404 {
-  height: 158px;
-  line-height: 153px;
-}
-
-.notfound .notfound-404 h1 {
-  font-family: 'Josefin Sans', sans-serif;
-  color: #222;
-  font-size: 220px;
-  letter-spacing: 10px;
-  margin: 0px;
-  font-weight: 700;
-  text-shadow: 2px 2px 0px #c9c9c9, -2px -2px 0px #c9c9c9;
-}
-
-.notfound .notfound-404 h1>span {
-  text-shadow: 2px 2px 0px #ffab00, -2px -2px 0px #ffab00, 0px 0px 8px #ff8700;
-}
-
-.notfound p {
-  font-family: 'Josefin Sans', sans-serif;
-  color: #c9c9c9;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 0px;
-  margin-bottom: 15px;
-}
-
-.notfound a {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 14px;
-  text-decoration: none;
-  text-transform: uppercase;
-  background: transparent;
-  color: #c9c9c9;
-  border: 2px solid #c9c9c9;
-  display: inline-block;
-  padding: 10px 25px;
-  font-weight: 700;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.notfound a:hover {
-  color: #ffab00;
-  border-color: #ffab00;
-}
-
-@media only screen and (max-width: 480px) {
-  .notfound .notfound-404 {
-    height: 122px;
-    line-height: 122px;
-  }
-
-  .notfound .notfound-404 h1 {
-      font-size: 122px;
-  }
-}
-
-    </style>
-
-</head>
-
-<body>
-
-	<div id="notfound">
-		<div class="notfound">
-			<div class="notfound-404">
-				<h1>4<span>0</span>4</h1>
-			</div>
-			<p>Trang này đang bảo trì, hiện chưa sử dụng được!</p>
-			<a href="/">Trang chủ</a>
-		</div>
-	</div>
-
-</body>
+    <!-- End Profile -->
+    <script src="/javascripts/changePass.js"></script>
+    <div id="dialogChangePass" class="dialogChangePass">
+      <div class="dialog-contentChangePass">
+        <span class="close" onclick="closeDialogChangePass()">
+          <i class="fa-sharp fa-solid fa-xmark fa-xl"></i>
+        </span>
+        <span class="fs-25">Đổi mật khẩu nè!</span>
+        <div class="mt-30">
+          <span class="fs-15 mr-25">Mật khẩu cũ: </span>
+          <input class="inputAddSkin ml-5" type="password" id="ipOldPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-25">Mật khẩu mới: </span>
+          <input class="inputAddSkin" type="password" id="ipNewPass" />
+        </div>
+        <div>
+          <span class="fs-15 mr-10">Xác nhận khẩu mới: </span>
+          <input class="inputAddSkin" type="password" id="ipReNewPass" />
+        </div>
+        <p
+          style="text-align: center; font-size:medium; margin-left: 40px; color:red"
+          id="errValue"
+        ></p>
+        <button
+          class="btn-shape c-white bg-blue width-fit left-flex mt-10"
+          onclick="changePassword()"
+        >Đổi mật khẩu</button>
+      </div>
+    </div>
+  </body>
 
 </html>

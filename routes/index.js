@@ -29,6 +29,9 @@ router.get('/donates', function (req, res, next) {
 router.get('/users', function (req, res, next) {
   res.render('users');
 });
+router.get('/dotcoinplus', function (req, res, next) {
+  res.render('dotcoinplus');
+});
 router.get('/transactions/transactionsplayer', function (req, res, next) {
   res.render('transactionPlayer');
 });
