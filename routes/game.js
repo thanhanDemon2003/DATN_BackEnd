@@ -9,7 +9,8 @@ router.post('/Login', PlayerController.LoginFacebookController);
 router.post('/Loginwithdiscord', PlayerController.LoginDiscordController);
 router.post('/saveposition/:id', PlayerController.SavePositionController);
 router.get('/wardrobeplayer/:id', PlayerController.wardrobeController);
-router.get('/loginpayment', PlayerController.LoginPayToFacebook)
+router.get('/loginpayment', PlayerController.LoginPayToFacebook);
+router.get('/checkplayer/:id', PlayerController.getPlayerControllers);
 router.post('/LinkAddLogin/:id', PlayerController.LinkAddLoginController)
 //gunskin
 router.get('/getgunskin/:id', GunSkinController.GetGunSkinByIdController);
