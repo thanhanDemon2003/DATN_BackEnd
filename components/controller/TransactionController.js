@@ -26,13 +26,15 @@ const buyGunSkinController = async (req, res) => {
         gunskin.price - (gunskin.price * gunskin.percent) / 100;
       const transaction = await TransactionService.buyGunSkin(
         id_Player,
+        player.name,
         id_GunSkin,
         gunskin.name,
-        gunskinPrice
+        gunskinPrice,
+        gunskin.category
       );
       const updatePlayer = await PlayerService.updateGunSkin(
         id_Player,
-        player.balance,
+        newBalance,
         id_GunSkin,
         gunskin.name,
         gunskin.color,
@@ -65,15 +67,15 @@ const giveGunSkinController = async (req, res) => {
         .status(400)
         .json({ error: 1, notification: "Người chơi đã sở hữu skin này" });
     }
-    const gunskinPrice = 0;
+    const gunskinPrice = -1;
     const transaction = await TransactionService.buyGunSkin(
       id_Player,
+      player.name,
       id_GunSkin,
       gunskin.name,
       gunskinPrice,
       gunskin.category
     );
-    console.log(gunskin.category, "guskin");
     const updatePlayer = await PlayerService.updateGunSkin(
       id_Player,
       player.balance,

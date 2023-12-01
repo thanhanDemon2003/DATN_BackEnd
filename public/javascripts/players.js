@@ -1,3 +1,4 @@
+
 function init() {
   getAllUsers();
 }
@@ -6,7 +7,7 @@ const token = JSON.parse(localStorage.getItem("token"));
 var checked = {};
 
 if (!token) {
-  window.location.href = '/login';
+  window.location.href = "/login";
 }
 init();
 
@@ -30,10 +31,23 @@ function handleNewData(user) {
   const newPlayer = document.createElement("user");
   newPlayer.id = user._id;
   newPlayer.status = user.status;
-  var fb_id = user.fb_id.toString();
 
-  if (fb_id.length > 10) {
-    fb_id = fb_id.slice(0, 10) + "...";
+  if (user.fb_id) {
+    newPlayer.idData1 = user.fb_id;
+  }
+  else if (user.id_discord) {
+    newPlayer.idData1 = user.id_discord;
+  }
+  else if(user.id_discord && user.fb_id){
+    newPlayer.idData1 = user.id_discord;
+  }
+  var dataIDShow = newPlayer.idData1;
+  if (dataIDShow.length > 10) {
+    dataIDShow = dataIDShow.slice(0, 10) + "...";
+  }
+  var name = user.name;
+  if (name.length > 10) {
+    name = name.slice(0, 10) + "...";
   }
   if (user.status === 0) {
     checked = "checked";
@@ -45,25 +59,21 @@ function handleNewData(user) {
   <h4 class="c-grey w-full m-0">Người chơi</h4>
   <div class="one d-flex" id="xemdialog">
   <div class="one d-flex" >
-    <div class="fs-14">
-      <span class="c-grey">FB:</span>
-      <span>${fb_id}</span>
+    <div class="fs-14 >
+      <span class="c-grey">Tên:</span>
+      <span >${name}</span>
     </div>
     <div class="fs-14">
-      <span class="c-grey">Vị trí game:</span>
-      <span
-        ><span>x:${user.positionX} </span>
-        <span>y:${user.positionY} </span
-        ><span>z:${user.positionZ} </span></span
-      >
-    </div>
+    <span class="c-grey">ID Đối tác:</span>
+    <span >${dataIDShow}</span>
+  </div>
     <div class="fs-14">
-      <span class="c-grey">Tiền:</span>
+      <span class="c-grey">DotCoin:</span>
       <span>${user.balance} </span>
     </div>
     <div class="fs-14">
-      <span class="c-grey" id="gunskin">Skin súng</span>
-      <span>${user.wardrobe.length}</span>
+      <span class="c-grey" id="gunskin">Sở hữu</span>
+      <span>${user.wardrobe.length} Skin</span>
     </div>
     </div>
     <div class="toggle mt-10" id="myCheckbox">
@@ -133,18 +143,14 @@ function handleShowDialog(data, skins) {
           <div class="box-dialog-chil">
             <div class="dialog-content1">
               <p class="btn-shape c-white bg-green center-flex">Thông tin người chơi</p>
-              <p>FB: ${data.fb_id} </p>
+              <p>Tên người chơi: ${data.name} </p>
               <div class="form-group">
-              <label>positionX</label>
-              <input type="number" name="" id="positionX" value="${data.positionX}">
+              <label>Google UID</label>
+              <p>${data.fb_id}</p>
               </div>
               <div class="form-group">
-              <label>positionY</label>
-              <input type="number" name="" id="positionY" value="${data.positionY}">
-              </div>
-              <div class="form-group">
-              <label>positionZ</label>
-              <input type="number" name="" id="positionZ" value="${data.positionZ}">
+              <label>Discord ID</label>
+              <p>${data.id_discord}</p>
               </div>
               <div class="form-group">
               <label>balance</label>
@@ -159,25 +165,20 @@ function handleShowDialog(data, skins) {
     <p class="btn-shape c-white bg-blue center-flex">Skin đã sở hữu</p>`;
     skins.forEach((skin) => {
       let skinData = `
-                <div class="dialog-content1">
-                <span class="fw-bold c-grey">STT: ${stt++}</span>
+                <div class="dialog-content1-player">
+                <div class="fw-bold c-grey">Skin: ${stt++}</div>
                 <div class="form-group">
-                <span class="fw-bold">id_Skin:  </span>
-                <span class="fw-n">${skin.gunskinId}<span>
+                  <span class="fw-bold">Tên Skin</span>
+                   <span class="fw-n w-max">${skin.nameSkin}<span>
                 </div>
                 <div class="form-group">
-                  <span class="fw-bold">Tên Skin:</span>
-                   <span class="fw-n">${skin.nameSkin}<span>
-                </div>
-                <div class="form-group">
-
-                   <span class="fw-bold">Màu: </span>
-                   <span class="fw-n">${skin.color} </span>
+                   <span class="fw-bold">Màu </span>
+                   <span class="fw-n w-max">${skin.color} </span>
                 </div>
                 <div class="form-group mb-15">
 
-                    <span class="fw-bold">Category: </span>
-                    <span class="fw-n">${skin.category} </span>
+                    <span class="fw-bold">Category </span>
+                    <span class="fw-n w-max">${skin.category} </span>
                 </div>
 
                     </div>
@@ -203,10 +204,12 @@ function handleChangeCheckbox(userId, status) {
     text: "Bạn có muốn cập nhật status không?",
     icon: "warning",
     showCancelButton: true,
+    confirmButtonText: "Có",
+    cancelButtonText: "Không",
   }).then((result) => {
     if (result.isConfirmed) {
       updateStatus(userId, status);
-    } else if (result.isDismissed) {
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
       location.reload();
     }
   });
@@ -225,13 +228,17 @@ function updateStatus(userId, status) {
       Authorization: `${token}`,
     },
   })
-    .then((res) => {
-      Swal.fire({
-        title: "Đổi thành công",
-        text: "Bạn đã thay đổi thành công trạng thái của người chơi",
-        icon: "success",
-      });
-    })
+    .then((res) =>
+      res.json().then((data) => {
+        if (data.success === 1) {
+          Swal.fire({
+            title: "Đổi thành công",
+            text: "Bạn đã thay đổi thành công trạng thái của người chơi",
+            icon: "success",
+          });
+        }
+      })
+    )
     .catch((err) => {
       if (err.code === 401) {
         handleUnauthorizedError();
@@ -244,21 +251,15 @@ function updateStatus(userId, status) {
     });
 }
 function handleUpdatePlayer(id) {
-  const positionX = document.getElementById("positionX").value;
-  const positionY = document.getElementById("positionY").value;
-  const positionZ = document.getElementById("positionZ").value;
   const balance = document.getElementById("balance").value;
-  fetch(
-    `/admin/updatePlayer/${id}?x=${positionX}&y=${positionY}&z=${positionZ}&balance=${balance}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `${token}`,
-      },
-    }
-  )
+  fetch(`/admin/updatePlayer/${id}?x=0&y=0&z=0&balance=${balance}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `${token}`,
+    },
+  })
     .then((res) => {
-      user = res.json();
+      console.log(res);
       if (res.status === 401) {
         handleUnauthorizedError();
       }
@@ -267,13 +268,9 @@ function handleUpdatePlayer(id) {
         text: "Bạn đã cập nhật thành công thông tin của người chơi",
         icon: "success",
       });
-      if (user.error !== 200) {
-        Swal.fire({
-          title: "Cập nhật thất bại",
-          text: "Bạn đã cập nhật thất bại thông tin của người chơi",
-          icon: "error",
-        });
-      }
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     })
     .catch((err) => {
       if (err.code === 401) {
@@ -357,7 +354,9 @@ function handleGiveSkin(id_Player, gunskinId) {
         text: "Bạn đã tặng skin thành công cho người chơi",
         icon: "success",
       });
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     })
     .catch((err) => {
       if (err.code === 401) {

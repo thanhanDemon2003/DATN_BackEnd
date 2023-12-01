@@ -30,13 +30,14 @@ function gettransactionsplayer(data) {
 
   data.forEach((item) => {
     count++;
-    console.log("lần duyệt player", count, item.id_Player);
+    console.log("lần duyệt player", count, item.namePlayer);
+    console.log("lần duyệt giao dịch", count, item);
 
     row = document.createElement("tr");
     
     playerCell = document.createElement("td");
-    playerCell.setAttribute("data-label", "id_Player");
-    playerCell.textContent = item.id_Player;
+    playerCell.setAttribute("data-label", "Tên người chơi");
+    playerCell.textContent = item.namePlayer;
     playerCell.rowSpan += item.giaoDich.length;
 
     row.appendChild(playerCell);
@@ -44,18 +45,23 @@ function gettransactionsplayer(data) {
     count = 0
     item.giaoDich.forEach((transaction) => {
 
-      count++;
-      console.log("lần duyệt súng", count, transaction.id_GunSkin);
       row = document.createElement("tr");
       console.log(transaction);
       const gunSkinCell = document.createElement("td");
-      gunSkinCell.setAttribute("data-label", "Màu sắc");
-      gunSkinCell.textContent = transaction.id_GunSkin;
+      gunSkinCell.setAttribute("data-label", "Tên Skin");
+      gunSkinCell.textContent = transaction.nameSkin;
 
       const nameSkinCell = document.createElement("td");
-      nameSkinCell.setAttribute("data-label", "Tên Skin");
-      nameSkinCell.textContent = transaction.nameSkin;
+      nameSkinCell.setAttribute("data-label", "Loại Skin");
+      nameSkinCell.textContent = transaction.category;
 
+
+      if (transaction.price == -1) {
+        transaction.price = "Dot Team Tặng";
+      }
+      else{
+        transaction.price = transaction.price + " Dot Coin";
+      }
       const priceCell = document.createElement("td");
       priceCell.setAttribute("data-label", "Giá Mua");
       priceCell.textContent = transaction.price;

@@ -1498,7 +1498,21 @@ td[rowspan] {
     display: block;
   }
 }
-
+.dialog-content1-player{
+  max-width: 100%;
+  text-align: center;
+    display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.dialog-content1-player .fw-bold {
+  display: block;
+}
+.dialog-content1-player .form-group{
+  flex: 1;
+  margin-right: 10px;
+}
 .plans .green .price-green {
   text-align: center;
   border: 3px solid white;

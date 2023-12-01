@@ -24,7 +24,7 @@ const LoginFacebookController = async (req, res, next) => {
     if (login.status == 1) {
       return res
         .status(400)
-        .json({ error: 0, notification: "Tài khoản này đã bị khóa" });
+        .json({ error: 0, notification: "Account has been locked!" });
     }
     return res
       .status(200)
@@ -60,7 +60,7 @@ const LoginDiscordController = async (req, res, next) => {
     if (login.status == 1) {
       return res
         .status(400)
-        .json({ error: 0, notification: "Tài khoản này đã bị khóa" });
+        .json({ error: 0, notification: "Account has been locked!" });
     }
     return res
       .status(200)

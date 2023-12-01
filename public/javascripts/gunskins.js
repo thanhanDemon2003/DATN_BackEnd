@@ -215,7 +215,7 @@ function saleSkinApi(checkedValues, percent) {
         handleUnauthorizedError();
         return;
       }
-      if (res.status !== 200) {
+      if (res.success !== 0) {
         console.log(res);
         Swal.fire({
           title: "Thất bại",
@@ -366,6 +366,10 @@ function addGunSkin() {
   const priceSkin = document.getElementById("priceSkin");
   const categorySkin = document.getElementById("categorySkin");
   const btnAddSkin = document.getElementById("btnAddSkin");
+  nameSkin.value = ""
+  colorSkin.value = ""
+  priceSkin.value = ""
+  categorySkin.value = ""
   btnAddSkin.textContent = "Thêm";
   btnAddSkin.addEventListener("click", (e) => {
     addSkinApi(nameSkin, colorSkin, priceSkin);

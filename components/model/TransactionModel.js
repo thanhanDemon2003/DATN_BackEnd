@@ -5,6 +5,7 @@ const ObjectId = Schema.ObjectId;
 const schema = new Schema({
     id: { type: ObjectId},
     id_Player: { type: String },
+    namePlayer: { type: String },
     id_GunSkin: { type: String },
     nameSkin: { type: String },
     category: { type: String },

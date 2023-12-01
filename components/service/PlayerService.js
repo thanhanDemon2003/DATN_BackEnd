@@ -111,12 +111,8 @@ const SavePosition = async (id, positionX, positionY, positionZ) => {
   }
 };
 const getPlayer = async (id) => {
-  try {
     const player = await PlayerModel.findById(id);
     return player;
-  } catch (error) {
-    throw error;
-  }
 };
 const updateGunSkin = async (
   id,
@@ -135,7 +131,6 @@ const updateGunSkin = async (
       color: color,
       category: category,
     };
-    console.log("gun", gun);
     player.wardrobe.push(gun);
     await player.save();
     return player;

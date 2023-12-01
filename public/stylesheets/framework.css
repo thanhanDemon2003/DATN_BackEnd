@@ -91,6 +91,12 @@
 .pb-20 {
   padding-bottom: 20px;
 }
+.pr-20{
+  padding-right: 30px;
+}
+.pr-10{
+  padding-right: -10px;
+}
 
 .m-0 {
   margin: 0px;
@@ -167,6 +173,9 @@
 .ml-5{
   margin-left: 8px;
 }
+.ml-25{
+  margin-left: 25px;
+}
 .mb-5 {
   margin-bottom: 5px;
 }
@@ -205,6 +214,9 @@
 }
 .h-100 {
   min-height: 300px;
+}
+.w-max{
+  width: max-content;
 }
 /* End Padding And Margin */
 /* Start Coloring */
