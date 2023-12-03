@@ -4,7 +4,7 @@
 const paymentModel = require("../model/PaymentModel.js");
 
 const GetAllPayments = async () => {
-    const allPayment = await paymentModel.find();
+    const allPayment = await paymentModel.find().sort({Date: -1});
     return allPayment;
 };
 const GetPaymentPlayer= async (idPlayer) => {

@@ -14,7 +14,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="/images/dot.png" />
-    <title>Thưởng dotcoin</title>
+    <title>Lịch Sử Thanh Toán</title>
   </head>
 
   <body>
@@ -134,118 +134,24 @@
         <!-- Start Profile -->
         <div class="projects-section p-20">
           <h1 class="main-heading">Lịch sử nạp tiền</h1>
-          <div class="projects">
-            <div class="projects-box bg-white rad-10 align-c p-20 p-relative">
-              <span class="c-grey fs-14">2/3/2023</span>
-              <h4 class="mt-0 mb-0 fs-18">Người chơi: Demon</h4>
-              <p class="c-grey fs-16">
-                ID giao dịch của đối tác: 231129_236814
-              </p>
-              <p class="c-grey fs-16">
-                Mã oder: 123
-              </p>
-              <p class="c-grey fs-16">
-                Phương thức nạp: Zalopay
-              </p>
-              <p class="c-grey fs-16">
-                dotCoint: 100
-              </p>
-              <div
-                class="team-skills d-flex flex-start pt-15 pt-15 pb-15 mt-15 border-bottom border-top gap-5"
-              >
-                <p class="c-grey fs-16">Số tiền nạp: 20000</p>
-              </div>
-              <div class="between-flex gap-20 pt-20">
-                <div class="gap-20">
-                  <span class="btn-shape rad-6 c-white bg-green">Thành công</span>
-                </div>
-              </div>
-            </div>
-            <div class="projects-box bg-white rad-10 align-c p-20 p-relative">
-              <span class="c-grey fs-14">2/3/2023</span>
-              <h4 class="mt-0 mb-0 fs-18">Người chơi: Demon</h4>
-              <p class="c-grey fs-16">
-                ID giao dịch của đối tác: 231117_445240
-              </p>
-              <p class="c-grey fs-16">
-                Mã oder: 260
-              </p>
-              <p class="c-grey fs-16">
-                Phương thức nạp: Zalopay
-              </p>
-              <p class="c-grey fs-16">
-                dotCoint: 100
-              </p>
-              <div
-                class="team-skills d-flex flex-start pt-15 pt-15 pb-15 mt-15 border-bottom border-top gap-5"
-              >
-                <p class="c-grey fs-16">Số tiền nạp: 20000</p>
-              </div>
-              <div class="between-flex gap-20 pt-20">
-                <div class="gap-20">
-                  <span class="btn-shape rad-6 c-white bg-green">Thành công</span>
-                </div>
-              </div>
-            </div>
-            <div class="projects-box bg-white rad-10 align-c p-20 p-relative">
-              <span class="c-grey fs-14">2/3/2023</span>
-              <h4 class="mt-0 mb-0 fs-18">Người chơi: Demon</h4>
-              <p class="c-grey fs-16">
-                ID giao dịch của đối tác: 231115_375212
-              </p>
-              <p class="c-grey fs-16">
-                Mã oder: 221
-              </p>
-              <p class="c-grey fs-16">
-                Phương thức nạp: Zalopay
-              </p>
-              <p class="c-grey fs-16">
-                dotCoint: 100
-              </p>
-              <div
-                class="team-skills d-flex flex-start pt-15 pt-15 pb-15 mt-15 border-bottom border-top gap-5"
-              >
-                <p class="c-grey fs-16">Số tiền nạp: 20000</p>
-              </div>
-              <div class="between-flex gap-20 pt-20">
-                <div class="gap-20">
-                  <span class="btn-shape rad-6 c-white bg-red">Hủy</span>
-                </div>
-              </div>
-            </div>
-            <div class="projects-box bg-white rad-10 align-c p-20 p-relative">
-              <span class="c-grey fs-14">2/3/2023</span>
-              <h4 class="mt-0 mb-0 fs-18">Người chơi: Demon</h4>
-              <p class="c-grey fs-16">
-                ID giao dịch của đối tác: andqweqwe123134
-              </p>
-              <p class="c-grey fs-16">
-                Mã oder: 123
-              </p>
-              <p class="c-grey fs-16">
-                Phương thức nạp: VietQr
-              </p>
-              <p class="c-grey fs-16">
-                dotCoint: 100
-              </p>
-              <div
-                class="team-skills d-flex flex-start pt-15 pt-15 pb-15 mt-15 border-bottom border-top gap-5"
-              >
-                <p class="c-grey fs-16">Số tiền nạp: 20000</p>
-              </div>
-              <div class="between-flex gap-20 pt-20">
-                <div class="gap-20">
-                  <span class="btn-shape rad-6 c-white bg-orange">Đang xử lý</span>
-                </div>
-              </div>
-            </div>
+          <div id="mainPayment" class="projects">
+
           </div>
         </div>
       </div>
     </div>
 
     <!-- End Profile -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/javascripts/changePass.js"></script>
+    <script src="/javascripts/payment.js"></script>
     <div id="dialogChangePass" class="dialogChangePass">
       <div class="dialog-contentChangePass">
         <span class="close" onclick="closeDialogChangePass()">

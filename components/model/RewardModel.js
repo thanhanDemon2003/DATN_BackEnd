@@ -9,6 +9,6 @@ const schema = new Schema({
     playingTime: { type: String },
     gameMode: { type: Number },
     dotcoin: { type: Number },
-    Date: { type: String }
+    Date: { type: Date },
 });
 module.exports = mongoose.models.rewards || mongoose.model('rewards', schema);
