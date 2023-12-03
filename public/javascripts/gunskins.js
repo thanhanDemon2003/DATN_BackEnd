@@ -6,6 +6,7 @@ function init() {
 const token = JSON.parse(localStorage.getItem("token"));
 if (!token) {
   window.location.href = '/login';
+  Storage.clear();
 }
 var checked = {};
 init();
@@ -254,6 +255,7 @@ function handleUnauthorizedError() {
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = "/login";
+      Storage.clear();
     }
   });
 }
@@ -435,6 +437,7 @@ function handleUnauthorizedError() {
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = "/login";
+      Storage.clear();
     }
   });
 }

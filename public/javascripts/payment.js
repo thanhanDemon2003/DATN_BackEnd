@@ -19,6 +19,9 @@ function GetAllPayments() {
   })
     .then((response) => response.json())
     .then((data) => {
+      if (data.status === 401) {
+        handleUnauthorizedErrorRole(data.notification);
+      }
       console.log(data.payment);
     const dataPayment = data.payment;
     dataPayment.forEach(payment => {
@@ -75,4 +78,15 @@ newPayment.innerHTML = `
 const container = document.getElementById("mainPayment");
 container.appendChild(newPayment);
 }
-
+function handleUnauthorizedErrorRole(error) {
+  Swal.fire({
+    title: error,
+    text: "Vui lòng quay lại trang chủ",
+    icon: "error",
+    showConfirmButton: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = "/";
+    }
+  });
+}

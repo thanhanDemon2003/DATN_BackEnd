@@ -1,11 +1,11 @@
 const donateModel = require("../model/DonateModel");
 
-const UpDonate = async (name, amount, method) => {
+const UpDonate = async (name, amount, method, Date) => {
   const data = await donateModel.create({
     name,
     amount,
     method,
-    Date: Date.now(),
+    Date,
   });
   return data;
 };

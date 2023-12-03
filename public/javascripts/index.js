@@ -2,6 +2,7 @@ const token = localStorage.getItem('token');
 
 if (!token) {
     window.location.href = '/login';
+    Storage.clear();
 }
 const avatar = document.getElementById('avatar');
 const userInfo = document.getElementById('user-info');
@@ -19,6 +20,7 @@ avatar.addEventListener('click', () => {
 });
 logoutButton.addEventListener('click', () => {
     window.location.href = '/login';
+    Storage.clear();
 });
 
 

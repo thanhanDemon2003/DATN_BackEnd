@@ -93,6 +93,7 @@ function handleUnauthorizedError() {
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = "/login";
+      Storage.clear();
     }
   });
 }

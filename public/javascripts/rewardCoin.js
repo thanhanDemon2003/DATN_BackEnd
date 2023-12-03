@@ -4,6 +4,7 @@ function init(){
 const token = JSON.parse(localStorage.getItem("token"));
 if(!token){
     window.location.href = "/login";
+    Storage.clear();
 }
 init();
 function GetAllRewardCoin(){
@@ -15,6 +16,9 @@ function GetAllRewardCoin(){
     })
     .then((response) => response.json())
     .then((data) => {
+        if (data.status === 401) {
+            handleUnauthorizedErrorRole(data.notification);
+        }
         console.log(data);
         const dataRewardCoin = data.data;
         dataRewardCoin.forEach(rewardCoin => {
@@ -45,3 +49,15 @@ const formatted = vietnamDate.format("YYYY-MM-DD HH:mm");
             const contrainer = document.getElementById("mainReward");
             contrainer.appendChild(newRewardCoin);
 }
+function handleUnauthorizedErrorRole(error) {
+    Swal.fire({
+      title: error,
+      text: "Vui lòng quay lại trang chủ",
+      icon: "error",
+      showConfirmButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/";
+      }
+    });
+  }

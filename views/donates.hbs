@@ -134,43 +134,78 @@
         <!-- Start Profile -->
         <div class="projects-section p-20">
           <h1 class="main-heading">Lịch sử donate</h1>
-          <span class="btn-shape bg-blue mt-0 mb- w-full c-white">Thêm</span>
+          <span class="btn-shape bg-blue mt-0 mb- w-full c-white" onclick="addDonate()">Thêm</span>
 
           <div class="project-table">
             <div class="project-table p-20 bg-white rad-10 mt-20">
                 <table class="w-full">
                     <thead>
                         <tr class=" table-heading bg-eee fw-bold">
-                            <td>Người chơi donate</td>
-                            <td>Ngày donate</td>
+                            <td>STT</td>
+                            <td>Tên</td>
+                            <td>Ngày </td>
                             <td>Hình thức</td>
-                            <td>Số tiền donate</td>
+                            <td>Số tiền </td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td data-label="Name">Nguyễn Thành An</td>
-                            <td data-label="Finish Date">20/11/2023</td>
-                            <td data-label="Client">Momo</td>
-                            <td data-label="Price">20000 VNĐ</td>
-                            </td>
-                        </tr>
-                        <tr>
-                          <td data-label="Name">Nguyễn Trọng Huân</td>
-                          <td data-label="Finish Date">22/11/2023</td>
-                          <td data-label="Client">Zalo Pay</td>
-                          <td data-label="Price">50000 VNĐ</td>
-                          </td>
-                      </tr>
+                        
                     </tbody>
                 </table>
             </div>
         </div>
       </div>
     </div>
-
+  <div id="dialogAddDonate" class="dialogAdd">
+      <div class="dialog-content h-100">
+        <span class="close" onclick="closeDialogAdd()">
+          <i class="fa-sharp fa-solid fa-xmark fa-xl"></i>
+        </span>
+        <span
+          class="btn-shape c-white bg-green w-git fs-25"
+          id="lableDonate"
+        ></span>
+        <div class="box-dialog-chil">
+          <span class="form-group">
+            <p class="mt-20">Tên</p>
+            <input class="inputAddSkin" type="text" id="nameDonate" />
+          </span>
+          <span class="form-group">
+            <p class="mt-20">Ngày</p>
+            <input class="inputAddSkin" type="datetime-local" id="timeDonate" />
+          </span>
+          <span class="form-group">
+            <p class="mt-20">Số tiền</p>
+            <input class="inputAddSkin" type="number" id="amountDonate" />
+          </span>
+          <span class="form-group">
+            <p class="mt-20" for="categogy">Phương thức</p>
+            <select class="width-fit h-fit" id="methodDonate">
+              <option>Ngân hàng</option>
+              <option>Zalo Pay</option>
+            </select>
+          </span>
+        </div>
+        <button
+        class="btn-shape c-white bg-red fs-18 width-fit left-flex mt-30"
+          id="btnXoa">
+          Xóa
+        </button>
+        <button
+          class="btn-shape c-white bg-blue fs-18 width-fit left-flex mt-30"
+          id="btnDonate"
+        >
+        Cập Nhật
+        </button>
+        
+      </div>
+    </div>
     <!-- End Profile -->
+    
+    <script src="/javascripts/donate.js"></script>
     <script src="/javascripts/changePass.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div id="dialogChangePass" class="dialogChangePass">
       <div class="dialog-contentChangePass">
         <span class="close" onclick="closeDialogChangePass()">

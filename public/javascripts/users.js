@@ -5,6 +5,7 @@ function init() {
 const token = JSON.parse(localStorage.getItem("token"));
 if (!token) {
   window.location.href = '/login';
+  Storage.clear();
 }
 init();
 
@@ -15,9 +16,9 @@ async function getAllUsers() {
     },
   });
   const user = await res.json();
-  if (res.status === 401) {
+  if (res.status === 401 || res.error == 4) {
     handleUnauthorizedError();
-  } else if (res.status === 403) {
+  } else if (res.status === 403 || user.error == 5) {
     handleUnauthorizedErrorRole(user.msg);
   }
   data = user.data;
@@ -41,7 +42,7 @@ function handleNewUser(user) {
     <a href="mailto:${user.email}"><i class="fa-regular fa-envelope"></i></a>
     </div>
     <div class="person txt-c">
-      <img src="images/friend-05.jpg" alt="" />
+      <img src="images/manager.png" alt="" />
       <h3 class="mb-0 mt-10">${user.username}</h3>
       <p class="fs-14 c-grey mt-5">Manager</p>
     </div>
@@ -75,7 +76,7 @@ function handleNewUser(user) {
     </a>
     </div>
     <div class="person txt-c">
-      <img src="images/friend-05.jpg" alt="" />
+      <img src="images/admin.png" alt="" />
       <h3 class="mb-0 mt-10">${user.username}</h3>
       <p class="fs-14 c-grey mt-5">Admin</p>
     </div>
@@ -108,7 +109,7 @@ function handleNewUser(user) {
     <a href="mailto:${user.email}"><i class="fa-regular fa-envelope"></i></a>
     </div>
     <div class="person txt-c">
-      <img src="images/friend-05.jpg" alt="" />
+      <img src="images/manager.png" alt="" />
       <h3 class="mb-0 mt-10">${user.username}</h3>
       <p class="fs-14 c-grey mt-5">Manager</p>
     </div>
@@ -130,7 +131,7 @@ function handleNewUser(user) {
       <div class="fs-13">
         <span class="one btn-shape rad-6 c-white bg-blue" data-email=${user.email} onclick="clickResetPass(this)">Cấp lại mật
           khẩu</span>
-        <span class="one btn-shape rad-6 c-white bg-red data-email=${user.email} onclick="clickBlock(this)">Vô hiệu hóa</span>
+          <span class="one btn-shape rad-6 c-white bg-red" data-email=${user.email} onclick="clickBlock(this)">Vô hiệu hóa</span>
       </div>
     </div>
   </div>
@@ -310,6 +311,7 @@ function handleUnauthorizedError() {
   }).then((result) => {
     if (result.isConfirmed) {
       window.location.href = "/login";
+      Storage.clear();
     }
   });
 }

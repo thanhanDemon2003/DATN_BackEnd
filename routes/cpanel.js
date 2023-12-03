@@ -46,9 +46,9 @@ router.get('/getallreward', RewardController.GetAllReward);
 //payment 
 router.get('/getallpayment', PaymentController.GetAllPaymentsController)
 //donate
-router.post('/createdonate', DonateController.UpDonate);
+router.post('/createdonate', validate.checkRole, DonateController.UpDonate);
 router.get('/getalldonate', DonateController.GetAllDonate);
-router.put('/updatedonate/:id', DonateController.updateDonate);
-router.put('/deletedonate/:id', DonateController.deleteDonate); 
+router.put('/updatedonate/:id', validate.checkRole, DonateController.updateDonate);
+router.put('/deletedonate/:id', validate.checkRole, DonateController.deleteDonate); 
 
 module.exports = router;
