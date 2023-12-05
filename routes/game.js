@@ -5,6 +5,7 @@ const GunSkinController = require('../components/controller/GunSkinController');
 const TransactionController = require('../components/controller/TransactionController');
 const PaymentController = require('../components/controller/PaymentController');
 const RewardController = require('../components/controller/RewardController');
+
 //player
 router.post('/Login', PlayerController.LoginFacebookController);
 router.post('/Loginwithdiscord', PlayerController.LoginDiscordController);
@@ -27,4 +28,6 @@ router.post('/upreward', RewardController.UpReward);
 router.get('/getreward/:id', RewardController.GetReward);
 //payment
 router.get('/getpaymentplayer', PaymentController.GetPaymentPlayercontroller);
+router.get('/thongkepayment', PaymentController.ThongKePaymentController);
+//test
 module.exports = router;

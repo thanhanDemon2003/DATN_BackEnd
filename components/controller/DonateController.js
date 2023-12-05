@@ -68,9 +68,23 @@ const deleteDonate = async (req, res, next) => {
       .json({ succsess: false, notification: "Lỗi server", data: err });
   }
 };
+const tongDonateController = async (req, res, next) => {
+  try {
+    const data = await donateService.tongDonate();
+    return res
+      .status(200)
+      .json({ succsess: true, notification: "Thành công", data: data });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ succsess: false, notification: "Lỗi server", data: err });
+  }
+}
+
 module.exports = {
   UpDonate,
   GetAllDonate,
   deleteDonate,
   updateDonate,
+  tongDonateController
 };

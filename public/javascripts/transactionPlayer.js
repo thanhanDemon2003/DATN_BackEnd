@@ -72,7 +72,7 @@ function gettransactionsplayer(data) {
       const currentTime = new Date(transaction.Date);
       const momentDate = moment(currentTime);
       const vietnamDate = momentDate.tz("Asia/Ho_Chi_Minh");
-      dateCell.textContent = vietnamDate.format("YYYY-MM-DD HH:mm:ss");
+      dateCell.textContent = vietnamDate.format("YYYY-MM-DD HH:mm");
       row.appendChild(gunSkinCell);
       row.appendChild(nameSkinCell);
       row.appendChild(priceCell);

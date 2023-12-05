@@ -30,7 +30,7 @@ function handleNewData(transaction) {
   const currentTime = new Date(transaction.Date);
   const momentDate = moment(currentTime);
   const vietnamDate = momentDate.tz("Asia/Ho_Chi_Minh");
-  const formatted = vietnamDate.format("YYYY-MM-DD HH:mm:ss");
+  const formatted = vietnamDate.format("YYYY-MM-DD HH:mm");
   if(transaction.price == -1){
     transaction.price = "Dot Team Tặng"
   }else{

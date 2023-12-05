@@ -37,7 +37,7 @@ const currentTime = data.Date
 const momentDate = moment(currentTime);
 const vietnamDate = momentDate.tz("Asia/Ho_Chi_Minh");
 const formattedadd = vietnamDate.add(10, 'hours')
-const formatted = vietnamDate.format("YYYY-MM-DD HH:mm");
+const formatted = formattedadd.format("YYYY-MM-DD HH:mm");
 if(data.statusPayment === "PENDING"){
     cssPayment = "bg-yellow";
 }

@@ -25,7 +25,7 @@ const buyGunSkin = async (
 };
 const getAllTransaction = async () => {
   try {
-    const transactions = await TransactionModel.find();
+    const transactions = await TransactionModel.find().sort({ Date: -1 });
     return transactions;
   } catch (error) {
     throw error;

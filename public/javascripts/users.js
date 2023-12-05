@@ -163,11 +163,11 @@ function clickResetPass(e) {
 }
 function handleBlockUser(email, role) {
   Swal.fire({
-    title: "Bạn có chắc chắn muốn vô hiệu hóa người chơi này?",
-    text: "Người chơi sẽ không thể đăng nhập vào game nữa",
+    title: "Bạn có chắc chắn muốn đổi trạng thái của người dùng?",
+    text: "Người chơi sẽ được đổi trạng thái",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonText: "Vô hiệu hóa",
+    confirmButtonText: "Đổi trạng thái",
     cancelButtonText: "Hủy",
   }).then((result) => {
     if (result.isConfirmed) {
@@ -177,8 +177,8 @@ function handleBlockUser(email, role) {
 }
 function handleResetPass(email) {
   Swal.fire({
-    title: "Bạn có chắc chắn muốn cấp lại mật khẩu cho người chơi này?",
-    text: "Mật khẩu mới sẽ được gửi vào email của người chơi",
+    title: "Bạn có chắc chắn muốn cấp lại mật khẩu cho manager này?",
+    text: "Mật khẩu mới sẽ được gửi vào email manager ",
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Cấp lại mật khẩu",
@@ -202,7 +202,7 @@ async function handleResetPassAPI(email) {
   if (res.status === 200) {
     Swal.fire({
       title: "Thành công",
-      text: "Mật khẩu đã được gửi vào email của người chơi",
+      text: "Mật khẩu đã được gửi vào email của manager",
       icon: "success",
       showConfirmButton: true,
     }).then((result) => {
@@ -213,7 +213,7 @@ async function handleResetPassAPI(email) {
   } else {
     Swal.fire({
       title: "Thất bại",
-      text: "Mật khẩu chưa được gửi vào email của người chơi",
+      text: "Mật khẩu chưa được gửi vào email của manager",
       icon: "error",
       showConfirmButton: true,
     }).then((result) => {

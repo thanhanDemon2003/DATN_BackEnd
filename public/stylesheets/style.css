@@ -1717,4 +1717,210 @@ select::after {
 .w-full tbody tr td input[type="checkbox"]:hover {
   transform: scale(3);
 }
+.chart {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 1fr ;
+  grid-gap: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  max-width: 100%;
+  background-color: white;
+}
+.contentChart{
+  grid-column: 1/5;
+  grid-row: 1;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.contentChart h2{
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: fit-content;
+}
+.contentChart select{
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  color: #333;
+  width: 200px;
+}
+
+.labels {
+  grid-column: 2/5;
+  grid-row: 3;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-right: 150px;
+
+}
+.labels div {
+  width: 40px;
+  text-align: center;
+  transform: rotate(-45deg);
+}
+
+.values {
+  grid-column: 1/5;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 20px;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.bars {
+  grid-column: 2/5;
+  grid-row: 2; 
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #999;
+  font-weight: bold;
+  margin-bottom: 20px;
+  align-items: flex-end;
+  margin-right: 150px;
+}
+
+.bar-item {
+  width: 40px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  }
+.values div {
+  margin-top: 50px;
+  
+}
+.bar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+.value-hover {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% - 10px);
+  padding: 10px;
+  background: gray !important;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: none;
+  width: max-content;
+  color: white;
+  z-index: 1;
+
+}
+
+.value-hover::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: calc(50% - 6px);
+  border: 6px solid;
+  border-color: transparent white transparent transparent;
+}
+
+.bar:hover .value-hover {
+  display: block;
+}
+
+.bar:hover .value-hover {
+  display: block;
+}
+@media only screen and (max-width: 768px) {
+  .chart {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    grid-gap: 10px;
+    padding: 10px;
+  }
+
+  .contentChart {
+    grid-column: 1/2;
+    grid-row: 1;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contentChart h2,
+  .contentChart select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .labels {
+    grid-column: 1/2;
+    grid-row: 3;
+    justify-content: space-around;
+    margin-right: 0;
+  }
+
+  .labels div {
+    width: auto;
+    transform: rotate(0deg);
+  }
+
+  .values,
+  .bars {
+    grid-column: 1/2;
+    grid-row: 2;
+    margin-right: 0;
+  }
+
+  .bar-item {
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .values div {
+    margin-top: 0;
+  }
+
+  .bar {
+    flex-direction: row;
+  }
+
+  .value-hover {
+    left: 0;
+    bottom: calc(100% - 10px);
+    top: auto;
+  }
+
+  .value-hover::before {
+    left: calc(50% - 6px);
+    top: -6px;
+    border-color: white transparent transparent transparent;
+  }
+}
 /* End Plans Section */

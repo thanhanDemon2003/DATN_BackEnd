@@ -45,10 +45,12 @@ router.get('/getalltransactionplayer', TransactionController.getAllTransactionPl
 router.get('/getallreward', RewardController.GetAllReward);
 //payment 
 router.get('/getallpayment', PaymentController.GetAllPaymentsController)
+router.get('/thongkepayment', PaymentController.ThongKePaymentController);
+router.get('/Top10UseMonth', PaymentController.Top10UseMonthController);
 //donate
 router.post('/createdonate', validate.checkRole, DonateController.UpDonate);
 router.get('/getalldonate', DonateController.GetAllDonate);
 router.put('/updatedonate/:id', validate.checkRole, DonateController.updateDonate);
 router.put('/deletedonate/:id', validate.checkRole, DonateController.deleteDonate); 
-
+router.get('/tongDonate', DonateController.tongDonateController);
 module.exports = router;

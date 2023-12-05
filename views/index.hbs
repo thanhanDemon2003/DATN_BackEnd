@@ -66,7 +66,7 @@
           </li>
           <li>
             <a
-              class=" d-flex align-c fs-14 c-black rad-6 p-10"
+              class="d-flex align-c fs-14 c-black rad-6 p-10"
               href="/dotcoinplus"
             >
               <i class="fa-solid fa-file-invoice-dollar fa-coins"></i>
@@ -166,10 +166,8 @@
                   </div>
                   <div class="details flex">
                     <p class="c-grey m-0">Tiền được ủng hộ</p>
-                    <h3 class="mt-10 mb-10">$20.000</h3>
-                    <div class="progress bg-blue">
-                      <span class="bg-blue d-block" style="width: 80%;"></span>
-                    </div>
+                    <h3 id="tongDonate" class="mt-10 mb-10"></h3>
+
                   </div>
                 </div>
                 <div class="team between-flex gap-20">
@@ -178,10 +176,10 @@
                   </div>
                   <div class="details flex">
                     <p class="c-grey mt-5 mb-10">Người chơi</p>
-                    <h3 class="mt-0 mb-5">12</h3>
-                    <div class="progress bg-green">
+                    <h3 id="playerLenght" class="mt-0 mb-5"></h3>
+                    {{! <div class="progress bg-green">
                       <span class="bg-green d-block" style="width: 75%;"></span>
-                    </div>
+                    </div> }}
                   </div>
                 </div>
               </div>
@@ -191,83 +189,57 @@
           <!-- Start Project-Table-->
           <div class="project-table">
             <div class="project-table p-20 bg-white rad-10 mt-20">
-              <h2 class="mt-0 mb-20">Xếp hạng nạp tiền</h2>
+              <h2 id="monthNow" class="mt-0 mb-20"></h2>
               <table class="w-full">
                 <thead>
                   <tr class="table-heading bg-eee fw-bold">
                     <td>Người chơi</td>
                     <td>Ngày nạp gần nhất</td>
-                    <td>Hình thức thanh toán</td>
-                    <td>Số tiền nạp</td>
+                    <td>Tổng số tiền nạp</td>
                     <td>Xếp hạng</td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td data-label="Name">Thành An</td>
-                    <td data-label="Finish Date">10 May 2023</td>
-                    <td data-label="Client">MoMo</td>
-                    <td data-label="Price">$100000000</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-red"
-                      >TOP 1</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Name">Trọng Huân</td>
-                    <td data-label="Finish Date">09 Nov 2023</td>
-                    <td data-label="Client">Visa</td>
-                    <td data-label="Price">$10000000</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-orange"
-                      >TOP 2</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Name">Vũ Phong</td>
-                    <td data-label="Finish Date">09 Sep 2023</td>
-                    <td data-label="Client">Chuyển khoản</td>
-                    <td data-label="Price">$1150000</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-blue"
-                      >TOP 3</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Name">Anh Duy</td>
-                    <td data-label="Finish Date">22 May 2023</td>
-                    <td data-label="Client">Mater Card</td>
-                    <td data-label="Price">$10230</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-green"
-                      >TOP 4</span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Name">Minh Trí</td>
-                    <td data-label="Finish Date">24 May 2023</td>
-                    <td data-label="Client">VNPay</td>
-                    <td data-label="Price">$1500</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-green"
-                      >TOP 5</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td data-label="Name">Gia Bảo</td>
-                    <td data-label="Finish Date">01 Apr 2023</td>
-                    <td data-label="Client">Zalo Pay</td>
-                    <td data-label="Price">$free</td>
-                    <td data-label="Status"><span
-                        class="btn-shape c-white bg-green"
-                      >TOP 6</span>
-                    </td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+        <div class="chart">
+          <div class="contentChart">
+            <h2>Thống kê dữ liệu doanh thu theo năm</h2>
+            <select name="" id="charNam">
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <div class="values">
+            <div>20.000</div>
+            <div>100.000</div>
+            <div>300.000</div>
+            <div>500.000</div>
+          </div>
+          <div id="thongke" class="bars">
+          </div>
+
+          <div class="labels">
+            <div>01/2023</div>
+            <div>02/2023</div>
+            <div>03/2023</div>
+            <div>04/2023</div>
+            <div>05/2023</div>
+            <div>06/2023</div>
+            <div>07/2023</div>
+            <div>08/2023</div>
+            <div>09/2023</div>
+            <div>10/2023</div>
+            <div>11/2023</div>
+            <div>12/2023</div>
+          </div>
+        </div>
       </div>
+
     </div>
     <script src="/javascripts/changePass.js"></script>
     <div id="dialogChangePass" class="dialogChangePass">
@@ -277,24 +249,34 @@
         </span>
         <span class="fs-25">Đổi mật khẩu nè!</span>
         <div class="mt-30">
-          <span class="fs-15 mr-25" >Mật khẩu cũ:   </span>
+          <span class="fs-15 mr-25">Mật khẩu cũ: </span>
           <input class="inputAddSkin ml-5" type="password" id="ipOldPass" />
         </div>
         <div>
-          <span class="fs-15 mr-25" >Mật khẩu mới:   </span>
+          <span class="fs-15 mr-25">Mật khẩu mới: </span>
           <input class="inputAddSkin" type="password" id="ipNewPass" />
         </div>
         <div>
-          <span class="fs-15 mr-10" >Xác nhận khẩu mới:   </span>
+          <span class="fs-15 mr-10">Xác nhận khẩu mới: </span>
           <input class="inputAddSkin" type="password" id="ipReNewPass" />
         </div>
-          <p style="text-align: center; font-size:medium; margin-left: 40px; color:red" id="errValue">   </p>
+        <p
+          style="text-align: center; font-size:medium; margin-left: 40px; color:red"
+          id="errValue"
+        > </p>
         <button
           class="btn-shape c-white bg-blue width-fit left-flex mt-10"
           onclick="changePassword()"
         >Đổi mật khẩu</button>
       </div>
     </div>
+    <script src="javascripts/top10Payment.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>

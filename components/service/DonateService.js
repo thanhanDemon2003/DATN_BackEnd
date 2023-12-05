@@ -27,9 +27,19 @@ const deleteDonate = async (id) => {
   const data = await donateModel.findByIdAndDelete(id);
   return data;
 };
+const tongDonate = async ()=>{
+  const donate = await donateModel.find();
+  const sumDonate = donate.reduce((a,b)=>{
+    const amountNumber = Number(b.amount);
+    
+    return a + amountNumber;
+  },0)
+  return sumDonate;
+}
 module.exports = {
   UpDonate,
   GetAllDonate,
   deleteDonate,
   updateDonate,
+  tongDonate
 };
