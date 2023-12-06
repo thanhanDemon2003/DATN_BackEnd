@@ -28,6 +28,5 @@ router.post('/upreward', RewardController.UpReward);
 router.get('/getreward/:id', RewardController.GetReward);
 //payment
 router.get('/getpaymentplayer', PaymentController.GetPaymentPlayercontroller);
-router.get('/thongkepayment', PaymentController.ThongKePaymentController);
 //test
 module.exports = router;

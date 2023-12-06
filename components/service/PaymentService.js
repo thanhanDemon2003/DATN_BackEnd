@@ -1,6 +1,5 @@
 const { set, groupBy, sum } = require("lodash");
 const paymentModel = require("../model/PaymentModel.js");
-const moment = require("moment");
 const GetAllPayments = async () => {
   const allPayment = await paymentModel.find().sort({ Date: -1 });
   return allPayment;
@@ -191,9 +190,26 @@ const Top10UseMonth = async () => {
   totals.sort((a, b) => b.total - a.total);
   return totals;
 };
+const updatePaymentVietQr = async(orderCodePayment, transitionID) => {
+  const payment = await paymentModel.findOne({orderCodePayment: orderCodePayment});
+  payment.transitionID = transitionID||transitionID;
+  await payment.save();
+}
+const updatePayment = async(transitionID, status) => {
+  const payment = await paymentModel.findOne({transitionID: transitionID});
+  if (payment.statusPayment == "PENDING") {
+    payment.statusPayment = status||status;
+    await payment.save();
+    return payment;
+  }
+  return null;
+  
+}
 module.exports = {
   GetAllPayments,
   GetPaymentPlayer,
   ThongKePayment,
   Top10UseMonth,
+  updatePaymentVietQr,
+  updatePayment
 };

@@ -7,13 +7,13 @@ const UpReward = async (req, res, next) => {
         if (!id_Player|| !playingTime || !gameMode || !dotcoin) {
             return res.status(400).json({ succsess: false, notification: 'Thiếu dữ liệu', data: null });
         }
-        const player = await PlayerService.getPlayer(id_Player);
+        const player = await PlayerService.updateDotCoin(id_Player, dotcoin);
         if (!player) {
             return res.status(400).json({ succsess: false, notification: 'Không tìm thấy người chơi', data: null });
         }
         const namePlayer = player.name;
         const data = await RewardService.UpRewardPlayer(id_Player, namePlayer, playingTime, gameMode, dotcoin);
-        return res.status(200).json({ succsess: true, notification: 'Thành công', data: data });
+        return res.status(200).json({ succsess: true, notification: 'Thành công', data: data, player: player });
     } catch (err) {
         return res.status(500).json({ succsess: false, notification: 'Lỗi server', data: err });
     }

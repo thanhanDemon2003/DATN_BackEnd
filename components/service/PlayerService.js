@@ -165,6 +165,13 @@ const updatePlayer = async (id, positionX, positionY, positionZ, balance) => {
   await player.save();
   return player;
 };
+const updateDotCoin = async (id, dotcoin) => {
+  const player = await PlayerModel.findById(id);
+  const dotCoinUp = Number(player.balance) + Number(dotcoin);
+  player.balance = dotCoinUp || player.dotcoin;
+  await player.save();
+  return player;
+}
 module.exports = {
   LoginFacebookService,
   SavePosition,
@@ -177,5 +184,6 @@ module.exports = {
   LoginFacebookPayment,
   LoginDiscordService,
   LinkAddLoginServiceGG,
-  LinkAddLoginServiceDiscord
+  LinkAddLoginServiceDiscord,
+  updateDotCoin
 };
