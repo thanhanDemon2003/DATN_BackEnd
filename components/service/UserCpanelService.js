@@ -77,7 +77,7 @@ p {
       </p>
       <p>
         Bạn có thể tham gia xem dữ liệu trang Admin của chúng tôi qua trang:
-        <a href="https://gamedatn.andemongame.tech/login">Trang Admin</a> và nếu bạn có thắc mắc gì hãy liên hệ với tôi qua mail
+        <a href="https://darkdisquitegame.andemongame.tech/login">Trang Admin</a> và nếu bạn có thắc mắc gì hãy liên hệ với tôi qua mail
         <a href="mailto:iamdemon.dev@gmail.com"><span style="color:navy; font-weight: bold;">iamdemon.dev@gmail.com</span></a>, tôi sẽ giải đáp thắc mắc của bạn.
       </p>
       <p>
@@ -114,7 +114,7 @@ const sendResetPasswordToEmail = async (email, username, password) => {
     subject: 'Cấp lại mật khẩu',
     html: `${username} đã yêu cầu cấp lại mật khẩu
         Mật khẩu mới của bạn là: ${password}
-        Bạn có thể truy cập đường link này để đăng nhập: https://gamedatn.andemongame.tech/login`
+        Bạn có thể truy cập đường link này để đăng nhập: https://darkdisquitegame.andemongame.tech/login`
   };
   await transporter.sendMail(info);
 }
