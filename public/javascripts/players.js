@@ -155,9 +155,8 @@ function handleShowDialog(data, skins) {
               </div>
               <div class="form-group">
               <label>balance</label>
-              <input type="number" name="" id="balance" value="${data.balance}">
+              <p>${data.balance}</p>
               </div>
-              <button class="btn-shape c-white bg-red center-flex" onclick="handleUpdatePlayer('${data._id}')">Cập nhật</button>
             </div>
             `;
   if (skins.length > 0) {
