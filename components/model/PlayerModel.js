@@ -7,8 +7,10 @@ const schema = new Schema({
   name: { type: String },
   fb_id: {
     type: String,
+    default: "",
   },
-  id_discord: { type: String },
+  id_discord: { type: String, 
+    default: "", },
   name: { type: String },
   positionX: { type: String, default: "0" },
   positionY: { type: String, default: "0" },

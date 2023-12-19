@@ -35,8 +35,9 @@ const LoginFacebookController = async (req, res, next) => {
 };
 const LoginDiscordController = async (req, res, next) => {
   try {
-    const id_discord = req.body.id_discord;
-    const name = req.body.name;
+    const {id_discord, name} = req.body;
+    console.log(id_discord);
+    console.log(name);
     if (!id_discord) {
       return res
         .status(400)
